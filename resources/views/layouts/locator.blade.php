@@ -9,14 +9,16 @@
    
 </head>
 <body>
-    <div class="w-full h-full bg-gray-800 flex">
+    <div class="w-full h-full max-h-full bg-gray-800 flex">
         <!-- Vertical Nav -->
         @include('layouts.includes.vertical_nav')
 
         <!-- Content -->
-        <div class="flex-1 bg-gray-100 my-4 mr-4 px-6" style="border-radius: 30px">
+        <div class="flex-1 bg-gray-100 my-4 mr-4 px-6 overflow-x-auto" style="border-radius: 30px">
             @include('layouts.includes.topbar')
-            @yield('content')
+            <div class="overflow-y-auto">
+                @yield('content')
+            </div>
         </div>        
     </div>
 

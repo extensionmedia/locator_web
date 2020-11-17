@@ -6,7 +6,7 @@
             {{ __('Recharger') }}
         </div>
     </div>
-    <div class="grid grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <?php
             $icons = [
                 ['<i class="fas fa-hand-holding-usd"></i>', '<i class="fas fa-chevron-up"></i>', "24.254 MAD" , 'Recettes'],
