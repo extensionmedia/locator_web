@@ -1,4 +1,4 @@
-<div class="h-14 flex items-center justify-between border-b border-gray-200">
+<div class="h-16 flex items-center justify-between border-b border-gray-200 px-3">
     <div class="text-gray-500 font-bold text-sm"> {{ __('Dashboard') }} </div>
     <div class="flex items-center">
         <div class="mx-2 rounded-full border py-1 px-2 bg-gray-200 relative">

@@ -1,4 +1,4 @@
-<div class="">
+<div class=" px-3">
     <div class="flex justify-between items-center text-gray-700 text-lg font-bold py-4">
         <div class="">{{ __('Rapport General') }}</div>
         <div class="text-xs cursor">

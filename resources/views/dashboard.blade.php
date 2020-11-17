@@ -6,7 +6,4 @@
     @include('includes.cards')  
     @include('includes.cards')  
     @include('includes.cards')  
-    @include('includes.cards')  
-    @include('includes.cards')  
-    @include('includes.cards') 
 @endsection

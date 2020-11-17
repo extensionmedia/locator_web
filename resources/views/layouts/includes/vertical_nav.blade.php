@@ -10,7 +10,7 @@ $links = [
 ?>
 <div class="flex flex-col justify-between px-6 pt-4 h-full overflow-y-auto" style="width: 180px">
     <div class="">
-        <div class="flex items-center h-14 border-b border-gray-600">
+        <div class="flex items-center h-16 border-b border-gray-600">
             <img class="h-8 mr-2" src="{{ asset('images/locator-icon-96x96.png') }}">
             <div class="font-bold text-white text-lg">
                 {{ config('app.name') }}

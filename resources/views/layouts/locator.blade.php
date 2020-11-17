@@ -9,17 +9,21 @@
    
 </head>
 <body>
-    <div class="w-full h-full max-h-full bg-gray-800 flex">
+    <div class="w-full h-full max-h-full bg-gray-800 flex overflow-hidden">
         <!-- Vertical Nav -->
         @include('layouts.includes.vertical_nav')
 
         <!-- Content -->
-        <div class="flex-1 bg-gray-100 my-4 mr-4 px-6 overflow-x-auto" style="border-radius: 30px">
-            @include('layouts.includes.topbar')
-            <div class="overflow-y-auto">
+        <div class="flex-1 flex flex-col h-full bg-gray-100 my-4 mr-4 px-6 pb-6" style="border-top-left-radius: 30px; border-top-left-radius: 30px">
+            <div class="">
+                @include('layouts.includes.topbar')
+            </div>
+           
+            <div class="flex-1 overflow-y-auto pb-2">
                 @yield('content')
             </div>
-        </div>        
+        </div>  
+
     </div>
 
     
