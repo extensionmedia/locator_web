@@ -18,12 +18,17 @@ class CreateEntrepriseTable extends Migration
             $table->string('raison_sociale');
             $table->string('adresse');
             $table->string('ville');
-            $table->string('telephone');
+            $table->string('telephone_1');
+            $table->string('telephone_2');
+            $table->string('fax');
             $table->string('email');
+            $table->string('website');
             $table->integer('rc');
             $table->integer('cnss');
+            $table->integer('patente');
             $table->integer('nif');
             $table->string('logo');
+            $table->integer('ice');
             $table->timestamps();
         });
     }
