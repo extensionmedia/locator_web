@@ -14,7 +14,7 @@
         @include('layouts.includes.vertical_nav')
 
         <!-- Content -->
-        <div class="flex-1 flex flex-col h-full bg-gray-100 my-4 mr-4 px-6 pb-6" style="border-top-left-radius: 30px; border-top-left-radius: 30px">
+        <div class="flex-1 flex flex-col h-full bg-gray-100 my-4 mr-4 px-6 pb-6" style="border-top-left-radius: 30px; border-top-right-radius: 30px">
             <div class="">
                 @include('layouts.includes.topbar')
             </div>
@@ -26,6 +26,6 @@
 
     </div>
 
-    
+    @include('popper::assets')
 </body>
 </html>

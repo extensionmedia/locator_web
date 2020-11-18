@@ -177,6 +177,11 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
+        /*
+            My Services
+        */
+        andcarpi\Popper\PopperServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +234,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+            My Alias
+        */
+        'Popper' => andcarpi\Popper\Facades\Popper::class,
     ],
 
 ];
