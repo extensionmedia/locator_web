@@ -28,16 +28,18 @@
                 </tr>
             </thead>
             <tbody>
-                @for ($i = 0; $i < 12; $i++)
+                @foreach ($cars as $car)
                     <tr>
                         <td class="w-32">
                             <div class="-mb-1 flex items-center pl-2 h-12 my-1 border-t border-l border-b bg-white rounded-tl-lg rounded-bl-lg hover:shadow">
                                 <img 
                                     class="object-cover w-8 h-8 rounded-full cursor-pointer" 
-                                    src="http://midone-vue.left4code.com/img/profile-7.e6fd9c30.jpg"
+                                    src="{{ $car[0] }}"
                                 > 
                                 <div class="text-bold text-sm ml-1">
-                                    Car ({{$i}})
+                                    <div class="rounded-lg bg-black text-white py-1 px-2 text-xs shadow border" style="background-color:{{ $car[3] }}; color:{{ $car[4] }}">
+                                        {{ $car[2] }}
+                                    </div>
                                 </div>
                             </div>    
                         </td>
@@ -53,7 +55,7 @@
                             </td>
                         @endfor
                     </tr>
-                @endfor
+                @endforeach
             </tbody>
         </table>
 
