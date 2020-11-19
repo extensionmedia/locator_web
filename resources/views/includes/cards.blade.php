@@ -1,9 +1,11 @@
-<div class=" px-3">
+<div class="px-3 mb-4">
     <div class="flex justify-between items-center text-gray-700 text-lg font-bold py-4">
         <div class="">{{ __('Rapport General') }}</div>
-        <div class="text-xs cursor">
-            <i class="fas fa-sync-alt"></i>
-            {{ __('Recharger') }}
+        <div class="">
+            <button class="bg-white rounded-lg py-2 px-3 text-gray-600 text-sm hover:bg-orange-100 border-white shadow focus:outline-none">
+                <i class="fas fa-sync-alt"></i>
+                <span class="ml-2"> {{ __('Recharger') }}</span>
+            </button>
         </div>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
