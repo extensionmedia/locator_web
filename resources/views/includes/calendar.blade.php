@@ -6,13 +6,18 @@
             {{ __('Recharger') }}
         </div>
     </div>
-    <div class="bg-white">
-        <table class="w-full">
+    <div class="">
+        <table class="w-full" style="min-width: 620px">
             <thead>
                 <tr>
                     <th class=""></th>
                     @for ($i = 1; $i <= Carbon\Carbon::now()->daysInMonth; $i++)
-                        <th class="border text-xs bg-gray-300 text-gray-700" style="min-width: 15px"> {{ $i }} </th>
+                        <th class="w-4 min-w-6">
+                            <div class="-mb-2 lg:rounded-tl-lg lg:rounded-tr-lg border-t border-r border-l text-xs py-1 text-white text-xs" style="background-color:#658999">
+                                {{ $i }} 
+                            </div>
+                            
+                        </th>
                     @endfor
                     
                 </tr>
@@ -20,23 +25,25 @@
             <tbody>
                 @for ($i = 0; $i < 12; $i++)
                     <tr>
-                        <td class="py-4 border-b">
-                            <div class="flex items-center">
+                        <td class="w-32">
+                            <div class="-mb-1 flex items-center pl-2 h-12 my-1 border-t border-l border-b bg-white rounded-tl-lg rounded-bl-lg">
                                 <img 
                                     class="object-cover w-8 h-8 rounded-full cursor-pointer" 
                                     src="http://midone-vue.left4code.com/img/profile-7.e6fd9c30.jpg"
                                 > 
-                                <div class="text-bold text-sm">
+                                <div class="text-bold text-sm ml-1">
                                     Car ({{$i}})
                                 </div>
                             </div>    
                         </td>
                         @for ($j = 1; $j <= Carbon\Carbon::now()->daysInMonth; $j++)
-                            <td class="border py-4 " style="min-width: 15px"> 
+                            <td class=""> 
                                 @if ($i === 2 && $j > 12)
-                                    <div class="bg-orange-500 rounded py-1 px-1 h-3"></div>
+                                    <div class="-mb-2 flex items-center h-12 bg-white border-t border-b">
+                                        <div class="bg-orange-500 rounded py-1 px-1 h-3 w-full"></div>
+                                    </div>
                                 @else
-                                    
+                                    <div class="-mb-2 flex items-center h-12 bg-white border-t border-b"></div>
                                 @endif
                             </td>
                         @endfor

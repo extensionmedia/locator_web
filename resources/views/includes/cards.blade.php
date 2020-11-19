@@ -16,7 +16,7 @@
             ]
         ?>
         @for ($i = 0; $i < 4; $i++)
-            <div class="bg-white rounded shadow py-4 px-4">
+            <div class="bg-white rounded-xl shadow py-4 px-4">
                 <div class="flex justify-between items-center mb-4">
                     <div class="text-orange-400 text-xl"><?= $icons[$i][0] ?></div>
                     <div class="bg-green-400 text-white py-1 px-2 rounded-full text-xs" style="font-size: 10px">
