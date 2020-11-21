@@ -38,7 +38,8 @@ class DashboardController extends Controller
             ]
         ];
 
+        $activities = UserController::usersActivities();
         $days = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
-        return view('dashboard')->with(['cars'=>$cars, 'days'=>$days]);
+        return view('dashboard')->with(['cars'=>$cars, 'days'=>$days, 'activities'=>$activities]);
     }
 }

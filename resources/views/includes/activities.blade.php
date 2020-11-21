@@ -21,24 +21,38 @@
         }
     </style>
     <div class="">
-        @foreach ($cars as $car)
-            <div class="flex items-center mb-3">
+        @foreach ($activities as $activity)
+
+            <div 
+                class="flex items-center mb-3">
                 <div class="w-10 test">
                     <img 
                         class="object-cover w-8 h-8 rounded-full cursor-pointer" 
-                        src="{{ $car[0] }}"
+                        src="{{ $activity['profile_photo_path'] }}"
                     > 
                 </div>
-                <div class="bg-white flex-1 p-4 rounded-lg shadow relative">
-                    <div class="font-bold text-xs">Yassine EL.</div>
-                    <div class="font-light text-gray-400 text-xs">
-                        A Créer un contrat de location numéro <a href="">#4578556</a> 
+                <div class="bg-white flex-1 px-4 py-2 rounded-lg shadow relative
+                bg-white  cursor-pointer hover:shadow-lg 
+                       transition duration-500 ease-in-out
+                        transform hover:-translate-y-2 hover:scale-100
+                ">
+                    <div class="flex justify-between items-center mb-1">
+                        <div class="font-bold text-xs">
+                            {{ $activity['name'] }}
+                        </div>
+                        <div class="text-xs text-orange-400" style="font-size:10px">
+                            {{ $activity['created_at'] }} PM
+                        </div>
                     </div>
-                    <div class="absolute top-0 right-0 text-xs text-orange-400 p-4" style="font-size:10px">
-                        07:00 PM
+                    <div class="font-light text-gray-400 text-xs break-words">
+                        <p>{{ $activity['activity'] }}</p>
                     </div>
+
                 </div>
             </div>
         @endforeach
+        <div class="my-4 text-gray-600 text-center text-xs font-bold">
+            20 November
+        </div>
     </div>
 </div>
