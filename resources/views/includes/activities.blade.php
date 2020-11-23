@@ -13,12 +13,13 @@
         .test::after {
             display: inline-block;
             content: "";
-            border-top: 1px solid #3b3838;
-            width: 10px;
-            margin: 0 0 0 10px;
+            border-top: 2px solid #9f9f9f;
+            width: 9px;
+            margin: 0 0 0 31px;
             transform: translateY(-1rem);
             z-index: 0
         }
+        
     </style>
     <div class="">
         @foreach ($activities as $activity)
@@ -31,10 +32,8 @@
                         src="{{ $activity['profile_photo_path'] }}"
                     > 
                 </div>
-                <div class="bg-white flex-1 px-4 py-2 rounded-lg shadow relative
-                bg-white  cursor-pointer hover:shadow-lg 
-                       transition duration-500 ease-in-out
-                        transform hover:-translate-y-2 hover:scale-100
+                <div class="bg-white flex-1 px-4 py-2 rounded-lg shadow relative bg-white  cursor-pointer hover:shadow-lg 
+                       transition duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-100
                 ">
                     <div class="flex justify-between items-center mb-1">
                         <div class="font-bold text-xs">
