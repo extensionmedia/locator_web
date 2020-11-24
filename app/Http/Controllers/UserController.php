@@ -40,4 +40,21 @@ class UserController extends Controller{
         }
         return $all;
     }
+
+    public function edit($user){
+        $user = [
+            'profile_photo_path'            =>  'http://midone-vue.left4code.com/img/profile-14.04e928f6.jpg',
+            'name'                          =>  'Yassine EL MEFTOUHI',
+            'email'                         =>  'elmeftouhi@gmail.com',
+            'telephone'                     =>  '+212661098984',
+            'cin'                           =>  'LF19634',
+            'user_profile'                  =>  'Administrateur',
+            'entreprise_raison_sociale'     =>  'Locator SARL',
+            'is_gerant'                     =>  1,
+            'status'                        =>  1
+        ];
+        return view('user.edit')->with([
+            'user'  =>  $user
+        ]);
+    }
 }

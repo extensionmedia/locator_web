@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 
+/** User Routes */
+Route::get('/user/edit/{user}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
