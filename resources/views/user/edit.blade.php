@@ -24,8 +24,38 @@
 
         <div class="flex gap-3 mb-3">
             <div class="flex-1">
-                <label for="name" class="block text-xs text-gray-600">Nom Utilisateur *</label>
-                <input type="text" id="name" name="name" class="w-full rounded-lg border border-orange py-1 px-3 mt-1" value="{{ $user["name"] }}">
+                <label class="block">
+                    <span class="text-gray-700">Nom Utilisateur *</span>
+                    <input value="{{ $user["name"] }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                </label>
+            </div>
+
+            <div class="flex-1">
+
+                <label class="block">
+                    <span class="text-gray-700">Profile</span>
+                    <select name="user_profile_id" id="user_profile_id" class="form-select mt-1 block w-full">
+                        @foreach ($user_profiles as $profile)
+                            <option value="{{ $profile->id }}">{{ $profile->user_profile }}</option> 
+                        @endforeach
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="flex-1">
+                <label class="block">
+                    <span class="text-gray-700">Adresse *</span>
+                    <input value="{{ $user["name"] }}"  type="text" id="adresse" name="adresse" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                </label>
+            </div>
+        </div>
+
+        <div class="flex gap-3 mb-3">
+            <div class="flex-1">
+                <label for="telephone" class="block text-xs text-gray-600">Téléphone *</label>
+                <input type="text" id="telephone" name="telephone" class="w-full rounded-lg border border-orange py-1 px-3 mt-1" value="{{ $user["telephone"] }}">
             </div>
 
             <div class="flex-1">
@@ -34,11 +64,27 @@
             </div>
         </div>
 
-        <div class="flex gap-3">
-            <div class="flex-1">
-                <label for="adresse" class="block text-xs text-gray-600">Adresse *</label>
-                <input type="text" id="adresse" name="adresse" class="w-full rounded-lg border border-orange py-1 px-3 mt-1" value="{{ $user["name"] }}">
+        <label class="block mt-4">
+            <span class="text-gray-700">Requested Limit</span>
+            <select class="form-select mt-1 block w-full">
+              <option>$1,000</option>
+              <option>$5,000</option>
+              <option>$10,000</option>
+              <option>$25,000</option>
+            </select>
+        </label>
+
+        <div class="mb-3">
+            <div class="">
+                <label for="cin" class="block text-xs text-gray-600">CIN</label>
+                <input type="text" id="cin" name="cin" class="w-32 rounded-lg border border-orange py-1 px-3 mt-1" value="{{ $user["cin"] }}">
             </div>
+        </div>
+        <div class="flex mt-6">
+            <label class="flex items-center">
+              <input type="checkbox" class="form-checkbox">
+              <span class="ml-2">I agree to the <span class="underline">privacy policy</span></span>
+            </label>
         </div>
     </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class UserController extends Controller{
 
@@ -49,8 +50,12 @@ class UserController extends Controller{
             'is_gerant'                     =>  1,
             'status'                        =>  1
         ];
+
+        $user_profiles = DB::table('user_profiles')->select('id', 'user_profile')->get();
+
         return view('user.edit')->with([
-            'user'  =>  $user
+            'user'          =>  $user,
+            'user_profiles' =>  $user_profiles
         ]);
     }
 }
