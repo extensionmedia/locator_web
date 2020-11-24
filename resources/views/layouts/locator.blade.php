@@ -11,12 +11,8 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
     <link rel="stylesheet" href=" {{ asset('css/app.css') }}">
     <script src=" {{ asset('js/app.js') }}"></script>
-    <style>
-        body{
-            font-family: 'Roboto', sans-serif;
-            font-weight: 300
-        }
-    </style>
+
+    @livewireStyles
 </head>
 <body>
     <div class="w-full h-full max-h-full bg-gray-800 flex overflow-hidden">
@@ -37,5 +33,6 @@
     </div>
 
     @include('popper::assets')
+    @livewireScripts
 </body>
 </html>

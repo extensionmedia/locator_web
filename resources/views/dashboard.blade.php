@@ -1,6 +1,7 @@
 @extends('layouts.locator')
 
 @section('title') {{ config('app.name') }} @endsection
+@section('page_title') {{ __('Dashboard') }}   @endsection
 
 @section('content')
     @include('includes.cards')   

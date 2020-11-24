@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller{
 
-    public function generateRandomString($length = 10) {
-        return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
-    }
-
     public static function usersActivities(){
         $images = [
             'http://midone-vue.left4code.com/img/profile-14.04e928f6.jpg',

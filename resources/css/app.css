@@ -24,4 +24,7 @@
     background: #ffbf46;
     border-radius: 5px;
   }
-
+  body{
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300
+  }

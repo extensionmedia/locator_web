@@ -20,7 +20,7 @@ $links = [
         <ul class="text-gray-200 mt-2">
             @foreach ($links as $l)
                 <li>
-                    <a {{ Popper::arrow()->size('small')->position('left')->pop($l[1]) }} href="" class="flex items-center hover:bg-gray-600 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-4 lg:mb-1">                    
+                    <a {{ Popper::arrow()->size('small')->position('left')->pop($l[1]) }} href="{{ route('home') }}" class="flex items-center hover:bg-gray-600 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-4 lg:mb-1">                    
                         <div class="text-center w-full text-xl lg:text-base lg:w-6 lg:text-left"><?= $l[0] ?></div>
                         <div class="flex-1 text-sm hidden lg:block"><?= $l[1] ?></div>
                     </a>
