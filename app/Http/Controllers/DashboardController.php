@@ -38,8 +38,19 @@ class DashboardController extends Controller
             ]
         ];
 
+        $alerts = [
+            [
+                'created_at'        =>  '2020-11-20 15:42:13',
+                'subject'           =>  'Vidange',
+                'description'       =>  'Vidange de la voiture Dacia Logan 1452-A-40 programmé le 20/12/2020',
+                'status'            =>  0
+            ]
+        ];
+
         $activities = UserController::usersActivities();
         $schedules = ScheduleController::listSchedules();
+
+
         $days = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
         return view('dashboard')
                 ->with(
@@ -47,7 +58,8 @@ class DashboardController extends Controller
                         'cars'          =>  $cars, 
                         'days'          =>  $days, 
                         'activities'    =>  $activities,
-                        'schedules'     =>  $schedules
+                        'schedules'     =>  $schedules,
+                        'alerts'        =>  $alerts
                     ]);
     }
 }

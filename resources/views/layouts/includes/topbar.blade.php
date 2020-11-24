@@ -1,6 +1,7 @@
 <div class="h-16 flex items-center justify-between border-b border-gray-200 px-3">
     <div class="text-gray-500 font-bold text-sm"> {{ __('Dashboard') }} </div>
     <div class="flex items-center">
+        <!-- Search section -->
         <div class="mx-2 rounded-full border py-1 px-2 bg-gray-200 relative dropdown">
             <input class="bg-transparent placeholder-gray-400 text-xs mr-6 focus:outline-none" type="text" placeholder="Search ...">
             <span class="absolute text-gray-500 top-0 right-0 mt-2 mr-3 text-xs">
@@ -11,8 +12,8 @@
                 <div class="pb-2 text-sm font-bold text-gray-800">
                     Clients
                 </div>
-
-                <ul class="text-gray-800 text-xs">
+                <div class="-mx-4 border-t border-gray-200 pb-2"></div>
+                <ul class="text-gray-800 text-xs mb-4">
                     <li>
                         <a href="" class=" text-xs flex items-center hover:bg-orange-100 cursor-pointer py-1 px-2 -mx-2 rounded-md mb-1">                    
                             Yassine ELMEFTOUHI
@@ -35,7 +36,7 @@
                 <div class="pb-2 text-sm font-bold text-gray-800">
                     Contrat
                 </div>
-
+                <div class="-mx-4 border-t border-gray-200 pb-2"></div>
                 <ul class="text-gray-800 text-xs">
                     <li>
                         <a href="" class=" text-xs flex items-center hover:bg-orange-100 cursor-pointer py-1 px-2 -mx-2 rounded-md mb-1">                    
@@ -61,32 +62,50 @@
 
 
         </div>
+
+        <!-- Alerts section -->
         <div class="mx-4 relative text-lg text-gray-500 cursor-pointer dropdown">
             <i class="far fa-bell"></i>
-            <span class="w-2 h-2 bg-red-600 absolute rounded-full"></span>
-            <div class="dropdown-content hidden absolute cursor-default z-50 top-0 right-0 p-4 mt-8 bg-white rounded-lg shadow w-80 max-h-80 overflow-y-scroll">
-                <div class="pb-4 text-sm font-bold text-gray-600">
+            @if (count($alerts))
+               <span class="w-2 h-2 bg-red-600 absolute rounded-full"></span> 
+            @endif
+            
+            <div class="dropdown-content hidden absolute cursor-default z-50 top-0 right-0 p-4 mt-8 bg-white rounded-lg shadow @if (count($alerts)) w-80 @else w-48 @endif max-h-80 overflow-y-scroll">
+                <div class="pb-2 text-sm font-bold text-gray-600">
                     Alerts
                 </div>
-                @foreach ($activities as $activity)
+                <div class="-mx-4 border-t border-gray-200 pb-4"></div>
+                @forelse ($alerts as $alert)
                     <div class="flex items-center mb-3 cursor-pointer hover:underline">
                         <div class="bg-white flex-1">
                             <div class="flex justify-between items-center mb-1">
                                 <div class="font-bold text-xs">
-                                    {{ $activity['name'] }}
+                                    {{ $alert['subject'] }}
                                 </div>
                                 <div class="text-xs text-orange-400" style="font-size:10px">
-                                    {{ $activity['created_at'] }} PM
+                                    {{ $alert['created_at'] }}
                                 </div>
                             </div>
                             <div class="font-light text-gray-400 text-xs break-words">
-                                <p>{{ $activity['activity'] }}</p>
+                                <p>{{ $alert['description'] }}</p>
                             </div>
                         </div>
+                    </div>                    
+                @empty
+                    <div class="text-center text-xs mb-4 text-orange-400">
+                        <div class="text-3xl mb-2">
+                            <i class="far fa-smile-wink"></i>
+                        </div>
+                        <div class="">
+                            Aucune Notification!
+                        </div>
+                        
                     </div>
-                @endforeach
+                @endforelse 
             </div>
         </div>
+
+        <!-- Account section -->
         <div class="ml-4 dropdown relative">
             <img 
                 class="object-cover w-8 h-8 rounded-full cursor-pointer" 
@@ -100,8 +119,8 @@
 
                 <ul class="text-gray-200">
                     <li>
-                        <a href="" class="flex items-center hover:bg-gray-700 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-4 lg:mb-1">                    
-                            <div class="text-center w-full text-xs lg:text-base lg:w-6 lg:text-left">
+                        <a href="" class="flex items-center hover:bg-gray-700 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-1">                    
+                            <div class="text-center text-base w-6">
                                 <i class="far fa-user"></i>
                             </div>
                             <div class="flex-1 text-xs">Mon Compte</div>
@@ -109,8 +128,8 @@
                     </li>  
                     
                     <li>
-                        <a href="" class="flex items-center hover:bg-gray-700 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-4 lg:mb-1">                    
-                            <div class="text-center w-full text-xs lg:text-base lg:w-6 lg:text-left">
+                        <a href="" class="flex items-center hover:bg-gray-700 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-1">                    
+                            <div class="text-center text-base w-6">
                                 <i class="fas fa-unlock-alt"></i>
                             </div>
                             <div class="flex-1 text-xs">Modifier Mots de Passe</div>
@@ -118,8 +137,8 @@
                     </li>
 
                     <li>
-                        <a href="" class="flex items-center hover:bg-gray-700 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-4 lg:mb-1">                    
-                            <div class="text-center w-full text-xs lg:text-base lg:w-6 lg:text-left">
+                        <a href="" class="flex items-center hover:bg-gray-700 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-1">                    
+                            <div class="text-center text-base w-6">
                                 <i class="far fa-question-circle"></i>
                             </div>
                             <div class="flex-1 text-xs">Support Technique</div>
@@ -130,8 +149,8 @@
                 <div class="-mx-4 border-t border-gray-700 my-2"></div>
                 <ul class="text-gray-200">                    
                     <li>
-                        <a href="" class="flex items-center hover:bg-gray-700 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-4 lg:mb-1">                    
-                            <div class="text-center w-full text-xs lg:text-base lg:w-6 lg:text-left">
+                        <a href="" class="flex items-center hover:bg-gray-700 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-1">                    
+                            <div class="text-center text-base w-6">
                                 <i class="fas fa-door-open"></i>
                             </div>
                             <div class="flex-1 text-xs">Fermer Session</div>
