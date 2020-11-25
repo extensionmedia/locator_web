@@ -48,7 +48,7 @@ class UserController extends Controller{
             'user_profile'                  =>  'Administrateur',
             'entreprise_raison_sociale'     =>  'Locator SARL',
             'user_address'                  =>  'Lotissement DAR ALKHAIR, NR3, Rmilat - Martil',
-            'is_gerant'                     =>  1,
+            'is_gerant'                     =>  0,
             'status'                        =>  1
         ];
 
