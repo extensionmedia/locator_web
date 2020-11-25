@@ -10,7 +10,8 @@
             <img class="object-cover w-24 h-24 rounded-full cursor-pointer" src="{{ $user["profile_photo_path"] }}">
             <div class="text-lg ml-6">
                 <div class="text-gray-600 font-bold">{{ $user["name"] }}</div>
-                <div class="text-gray-400">{{ $user["user_profile"] }}</div>
+                <div class=" text-gray-400">{{ $user["user_profile"] }}</div>
+                <div class="text-gray-400">{{ $user["entreprise_raison_sociale"] }}</div>
             </div>
 
         </div>            
@@ -31,7 +32,6 @@
             </div>
 
             <div class="flex-1">
-
                 <label class="block">
                     <span class="text-gray-700">Profile</span>
                     <select name="user_profile_id" id="user_profile_id" class="form-select mt-1 block w-full">
@@ -47,43 +47,46 @@
             <div class="flex-1">
                 <label class="block">
                     <span class="text-gray-700">Adresse *</span>
-                    <input value="{{ $user["name"] }}"  type="text" id="adresse" name="adresse" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                    <input value="{{ $user["user_address"] }}"  type="text" id="adresse" name="adresse" class="form-input mt-1 block w-full" placeholder="Nom Adresse">
                 </label>
             </div>
         </div>
 
         <div class="flex gap-3 mb-3">
             <div class="flex-1">
-                <label for="telephone" class="block text-xs text-gray-600">Téléphone *</label>
-                <input type="text" id="telephone" name="telephone" class="w-full rounded-lg border border-orange py-1 px-3 mt-1" value="{{ $user["telephone"] }}">
+                <label class="block">
+                    <span class="text-gray-700">Téléphone *</span>
+                    <input value="{{ $user["telephone"] }}"  type="text" id="telephone" name="telephone" class="form-input mt-1 block w-full" placeholder="+212661098984">
+                </label>
             </div>
-
             <div class="flex-1">
-                <label for="email" class="block text-xs text-gray-600">Adresse E-Mail *</label>
-                <input type="text" id="email" name="email" class="w-full rounded-lg border border-orange py-1 px-3 mt-1" value="{{ $user["email"] }}">
+                <label class="block">
+                    <span class="text-gray-700">Adresse E-Mail *</span>
+                    <input value="{{ $user["email"] }}"  type="email" id="email" name="email" class="form-input mt-1 block w-full" placeholder="exemple@email.com">
+                </label>
             </div>
         </div>
-
-        <label class="block mt-4">
-            <span class="text-gray-700">Requested Limit</span>
-            <select class="form-select mt-1 block w-full">
-              <option>$1,000</option>
-              <option>$5,000</option>
-              <option>$10,000</option>
-              <option>$25,000</option>
-            </select>
-        </label>
 
         <div class="mb-3">
-            <div class="">
-                <label for="cin" class="block text-xs text-gray-600">CIN</label>
-                <input type="text" id="cin" name="cin" class="w-32 rounded-lg border border-orange py-1 px-3 mt-1" value="{{ $user["cin"] }}">
+            <div class="flex-1">
+                <label class="block">
+                    <span class="text-gray-700">CIN *</span>
+                    <input value="{{ $user["cin"] }}"  type="text" id="cin" name="cin" class="form-input mt-1 block w-full" placeholder="AB 123456">
+                </label>
             </div>
         </div>
+
         <div class="flex mt-6">
             <label class="flex items-center">
               <input type="checkbox" class="form-checkbox">
-              <span class="ml-2">I agree to the <span class="underline">privacy policy</span></span>
+              <span class="ml-2">Je suis Gérant</span>
+            </label>
+        </div>
+
+        <div class="flex mt-6">
+            <label class="flex items-center">
+              <input type="checkbox" class="form-checkbox">
+              <span class="ml-2">Compte Activé</span>
             </label>
         </div>
     </div>
