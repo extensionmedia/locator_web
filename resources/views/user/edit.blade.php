@@ -6,7 +6,7 @@
 @section('content')
     
     <!-- Photo Profile -->
-    <div class="p-4 shadow flex items-center justify-between bg-white rounded m-3 mb-6 relative">
+    <div class="card flex items-center justify-between relative xl:w-3/4 xl:mx-auto">
         <div class="flex items-center">
             <img class="object-cover w-24 h-24 rounded-full cursor-pointer" src="{{ $user["profile_photo_path"] }}">
             <div class="text-lg ml-6">
@@ -16,7 +16,7 @@
             </div>
 
         </div>            
-        <button class="upload_image border border-pink-700 py-2 px-4 rounded-lg text-sm bg-pink-500 text-white hover:bg-pink-400 focus:outline-none active:bg-pink-600">
+        <button class="upload_image btn btn-primary">
             <i class="fas fa-cloud-upload-alt"></i> {{ __('Changer Photo') }}
         </button>
         <div class="upload_image_message hidden absolute top-0 right-0 bg-green-400 text-white text-xs py-1 px-3 rounded-tl-lg rounded-bl-lg mt-1">
@@ -25,7 +25,7 @@
     </div>  
 
     <!-- Informations Utilisateur -->
-    <div class="p-4 shadow bg-white rounded m-3 mb-6">
+    <div class="card xl:w-3/4 xl:mx-auto">
         <h1 class="text-lg font-bold text-gray-600 mb-4 mt-2">{{ __('Les informations Utilisateur') }}</h1>
         <div class="-mx-4 border-t border-gray-200 mb-6"></div>
 
@@ -102,14 +102,16 @@
             <button type="submit" class="border border-pink-700 py-2 px-4 mr-2 rounded-lg text-sm bg-pink-500 text-white hover:bg-pink-400 focus:outline-none active:bg-pink-600">
                 <i class="far fa-save"></i> Enregistrer
             </button>
-            <button class="border py-2 px-4 rounded-lg text-sm bg-white text-gray-600 hover:bg-gray-100 focus:outline-none active:bg-gray-200">Annuler</button>
+            <button class="btn">Annuler</button>
         </div>
 
     </div>
 
     <!-- Mots de passe et Securite -->
-    <div class="p-4 shadow bg-white rounded m-3 mb-6 relative">
+    <div class="card relative xl:w-3/4 xl:mx-auto">
         <h1 class="text-lg font-bold text-gray-600 mb-4 mt-2">{{ __('Mots de passe et Securité') }}</h1>
+        <div class="-mx-4 border-t border-gray-200 mb-6"></div>
+
         <div class="flex items-center justify-between">
             <div class="">
                 <p class="text-xs">
@@ -120,7 +122,7 @@
                 </p>                
             </div>
             <div class="">
-                <button class="reset_password border border-pink-700 py-2 px-4 rounded-lg text-sm bg-pink-500 text-white hover:bg-pink-400 focus:outline-none active:bg-pink-600">
+                <button class="reset_password btn btn-primary">
                     <i class="far fa-envelope-open"></i> {{ __('Recevoir le lien') }}
                 </button>
             </div>

@@ -17,6 +17,9 @@ Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->nam
 /** User Routes */
 Route::get('/user/edit/{user}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
 
+/** Car Routes */
+Route::get('/park-auto', [App\Http\Controllers\CarController::class, 'index'])->name('car.index');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

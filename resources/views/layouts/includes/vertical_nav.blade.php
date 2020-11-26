@@ -1,11 +1,11 @@
 <?php
 $links = [
-    ['<i class="fas fa-home"></i>', 'Dashboard'],
-    ['<i class="fas fa-hourglass-half"></i>', 'Locations'],
-    ['<i class="far fa-address-card"></i>', 'Clients'],
-    ['<i class="fas fa-car-alt"></i>', 'Park Auto'],
-    ['<i class="fas fa-cash-register"></i>', 'Depenses'],
-    ['<i class="fas fa-user-friends"></i>', 'Utilisateurs']
+    ['<i class="fas fa-home"></i>', 'Dashboard', route("home")],
+    ['<i class="fas fa-hourglass-half"></i>', 'Locations', route("home")],
+    ['<i class="far fa-address-card"></i>', 'Clients', route("home")],
+    ['<i class="fas fa-car-alt"></i>', 'Park Auto', route("car.index")],
+    ['<i class="fas fa-cash-register"></i>', 'Depenses', route("home")],
+    ['<i class="fas fa-user-friends"></i>', 'Utilisateurs', route("home")]
 ]
 ?>
 <div class="flex flex-col justify-between px-6 pt-4 pb-4 h-full overflow-y-auto w-20 lg:w-48">
@@ -20,7 +20,7 @@ $links = [
         <ul class="text-gray-200 mt-2">
             @foreach ($links as $l)
                 <li>
-                    <a {{ Popper::arrow()->size('small')->position('left')->pop($l[1]) }} href="{{ route('home') }}" class="flex items-center hover:bg-gray-600 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-4 lg:mb-1">                    
+                    <a {{ Popper::arrow()->size('small')->position('left')->pop($l[1]) }} href="<?= $l[2] ?>" class="flex items-center hover:bg-gray-600 cursor-pointer py-2 px-2 -mx-2 rounded-md mb-4 lg:mb-1">                    
                         <div class="text-center w-full text-xl lg:text-base lg:w-6 lg:text-left"><?= $l[0] ?></div>
                         <div class="flex-1 text-sm hidden lg:block"><?= $l[1] ?></div>
                     </a>
