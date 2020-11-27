@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CarController extends Controller
-{
+class CarController extends Controller{
+
     public function index(){
         return view('car.index')->with([
             'cars'  =>  CarController::getCars()
         ]);
+    }
+
+    public function edit($car){
+        return view('car.edit')->with(
+            [
+                'car'   =>  CarController::getCars()[0]
+            ]
+            );
     }
 
     public static function getCars(){

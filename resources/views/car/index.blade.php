@@ -32,54 +32,70 @@
     </div>
 
     <div class="lg:px-4">
-        <div class="flex items-center justify-between rounded bg-gray-200 p-2 border border-gray-300">
-            <div class="flex items-center text-xs font-bold">
-                <div class="w-12 mr-4"></div>
-               <div class="w-24 px-2"> 
-                   <div class="py-1 px-2 inline">MATRICULE </div>
-               </div>
-               <div class="text-gray-800 w-24 px-2"> MARQUE </div>
-               <div class="text-gray-800 w-24 px-2"> SERIE </div>
-               <div class=" w-24"> STATUS </div> 
-               <div class=" w-24"> LOCATIONS </div>
-               <div class=" w-24"> DEPENSES </div>
-           </div> 
-           
-           <div class=""></div>           
-       </div>
-        @foreach ($cars as $car)
-        <div class="flex items-center justify-between rounded bg-white p-2 border border-gray-200 border-l hover:bg-gray-100" style="transition: all .5s; border-left:6px solid {{ $car['color'] }}">
-             <div class="flex items-center ">
-                <img class="object-cover w-12 h-12 rounded-full mr-4" src="{{ $car['image'] }}">
-                <div class="w-24"> 
-                    <div class="bg-gray-800 text-gray-100 rounded-lg py-1 px-2 text-xs inline">{{ $car['matricule'] }} </div>
-                </div>
-                <div class="text-gray-800 text-sm w-24"> {{ $car['marque'] }} </div>
-                <div class="text-gray-800 text-sm w-24"> {{ $car['serie'] }} </div>
-                
-                @if ($car['status'] == 1)
-                    <div class="my-2 py-1 px-2 text-xs bg-green-200 text-green-700 border-green-400 text-center rounded-xl border">
-                        Disponible
-                    </div>   
-                @elseif ($car['status'] == 0)
-                    <div class="my-2 py-1 px-2 text-xs bg-red-200 text-red-700 border-red-400 text-center rounded-xl border">
-                        Location
-                    </div>                 
-                @else
-                    <div class="my-2 py-1 px-2 text-xs bg-gray-200 text-gray-700 border-gray-400 text-center rounded-xl border">
-                        En Panne
-                    </div> 
-                @endif
-            </div> 
-            
-            <div class="">
-                <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
-            </div>           
-        </div>
-
-        @endforeach
-
-
+        <table class="w-full bg-white">
+            <thead>
+                <tr class="bg-gray-200 py-2 text-xs font-normal uppercase">
+                    <th class="py-3 w-16">Img</th>
+                    <th class="py-3 ">Matricule</th>
+                    <th class="py-3 text-left">Marque</th>
+                    <th class="py-3 text-center">Carburant</th>
+                    <th class="py-3">Status</th>
+                    <th class="py-3 text-right pr-2">Locations</th>
+                    <th class="py-3 text-right pr-2">Dépenses</th>
+                    <th class="py-3"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($cars as $car)
+                    <tr class="border-b hover:bg-gray-100" style="transition: all .3s">
+                        <td class="py-1" style="min-width: 60px">
+                            <img class="object-cover w-12 h-12 rounded-full mx-auto" src="{{ $car['image'] }}">
+                        </td>
+                        <td class="w-28">
+                            <div class="bg-gray-800 text-gray-100 rounded-lg py-1 px-2 text-xs w-24 text-center">
+                                {{ $car['matricule'] }} 
+                            </div>
+                        </td>
+                        <td class="">
+                            <span class="text-gray-800 text-sm"> 
+                                {{ $car['marque'] }} 
+                            </span>
+                            <span class="text-gray-800 text-xs"> 
+                                {{ $car['serie'] }} 
+                            </span>
+                        </td>
+                        <td class="w-28 text-center">
+                            <span class="text-gray-800 text-xs font-bold"> 
+                                {{ $car['carburant'] }} 
+                            </span>
+                        </td>
+                        <td class="w-28 text-center">
+                            @if ($car['status'] == 1)
+                                <div class="inline py-1 px-2 text-xs bg-green-200 text-green-700 border-green-400 text-center rounded-xl border">
+                                    Disponible
+                                </div>   
+                            @elseif ($car['status'] == 0)
+                                <div class="inline py-1 px-2 text-xs bg-red-200 text-red-700 border-red-400 text-center rounded-xl border">
+                                    Location
+                                </div>                 
+                            @else
+                                <div class="inline py-1 px-2 text-xs bg-gray-200 text-gray-700 border-gray-400 text-center rounded-xl border">
+                                    En Panne
+                                </div> 
+                            @endif
+                        </td>
+                        <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2">5.124.450 MAD</td>
+                        <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">45.900 MAD</td>
+                        <td class="w-14 text-center">
+                            <form class="m-0" method="POST" action="{{ route('car.edit', ['car'=>1]) }}">
+                                @csrf()
+                                <button type="submit" class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 hidden">
