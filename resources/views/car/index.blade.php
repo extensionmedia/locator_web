@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="lg:px-4">
+    <div class="rounded-lg border-t-2 border-b-2 border-pink-200 bg-red-500 overflow-hidden">
         <table class="w-full bg-white">
             <thead>
                 <tr class="bg-gray-200 py-2 text-xs font-normal uppercase">
@@ -98,7 +98,7 @@
         </table>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 hidden">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         @foreach ($cars as $car)
            <a href="" class="col-span-1 card pb-0 rounded-xl m-0 shadow-md relative cursor-pointer hover:shadow-lg 
            transition duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-100">
@@ -141,4 +141,5 @@
         
     </div>
 
+    <livewire:show-cars />
 @endsection
