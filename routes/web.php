@@ -21,6 +21,10 @@ Route::get('/user/edit/{user}', [App\Http\Controllers\UserController::class, 'ed
 Route::get('/park-auto', [App\Http\Controllers\CarController::class, 'index'])->name('car.index');
 Route::post('/park-auto/edit/{car}', [App\Http\Controllers\CarController::class, 'edit'])->name('car.edit');
 
+Route::get('/comment', function(){
+    return view('comment');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

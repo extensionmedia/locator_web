@@ -10,8 +10,6 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
     <link rel="stylesheet" href=" {{ asset('css/app.css') }}">
-    <script src=" {{ asset('js/app.js') }}"></script>
-
     @livewireStyles
 </head>
 <body>
@@ -33,6 +31,8 @@
     </div>
 
     @include('popper::assets')
+    <script src="{{ asset('js/app.js') }}" defer></script>
     @livewireScripts
+    
 </body>
 </html>
