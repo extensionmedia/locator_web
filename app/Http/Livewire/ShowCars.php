@@ -3,22 +3,21 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Cars;
+use App\Models\Cars;
 class ShowCars extends Component{
 
     public $style = 'grid';
-    public $list = '';
+    public $cars = [];
 
     public function render(){
         $cars = new Cars;
-        $this->list = $cars->getCars();
+        $this->cars = $cars->getCars();
         return view('livewire.show-cars');
     }
 
 
-    public function grid(){
-        $cars = new App\Cars;
-        $this->list = $cars->getCars();
+    public function change($style='grid'){
+        $this->style = $style;
     }
 
 }

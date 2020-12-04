@@ -4,7 +4,7 @@
 @section('page_title') {{ __('Mon Park Automobile') }}   @endsection
 
 @section('content') 
-    <div class="py-4 lg:p-4 flex items-center justify-between">
+    <div class="py-4 lg:p-4 flex items-center justify-between hidden">
         <div class="">
             <button class="btn btn-primary"> <i class="fas fa-plus"></i> Ajouter
         </div>
@@ -25,13 +25,15 @@
             </div>
 
             <div class="flex gap-2">
-                <button class="btn"><i class="far fa-list-alt"></i></button>
-                <button class="btn btn-primary"><i class="fas fa-th"></i></button>
+                <button class="btn" wire:click="change"><i class="far fa-list-alt"></i></button>
+                <button class="btn btn-primary" wire:click="change"><i class="fas fa-th"></i></button>
             </div>
         </div>
     </div>
 
-    <div class="rounded-lg border-t-2 border-b-2 border-pink-200 bg-red-500 overflow-hidden">
+    <livewire:show-cars />
+
+    <div class="rounded-lg border-t-2 border-b-2 border-pink-200 bg-red-500 overflow-hidden hidden">
         <table class="w-full bg-white">
             <thead>
                 <tr class="bg-gray-200 py-2 text-xs font-normal uppercase">
@@ -98,7 +100,7 @@
         </table>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 hidden">
         @foreach ($cars as $car)
            <a href="" class="col-span-1 card pb-0 rounded-xl m-0 shadow-md relative cursor-pointer hover:shadow-lg 
            transition duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-100">
@@ -141,5 +143,5 @@
         
     </div>
 
-    <livewire:show-cars />
+    
 @endsection
