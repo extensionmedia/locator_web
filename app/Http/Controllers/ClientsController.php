@@ -25,10 +25,15 @@ class ClientsController extends Controller
             'Souad BENAMAR',
             'Amina SAADIA'
         ];
-        $index = rand (0, count($images)-1);
+        $client_status = [
+            0   =>  '<div class="inline py-1 px-2 text-xs bg-gray-200 text-gray-700 border-gray-400 text-center rounded-xl border">Désactivé</div>',
+            1   =>  '<div class="inline py-1 px-2 text-xs bg-green-200 text-green-700 border-green-400 text-center rounded-xl border"> Activé</div>',
+            2   =>  '<div class="inline py-1 px-2 text-xs bg-red-200 text-red-700 border-red-400 text-center rounded-xl border">Liste Noire</div>'
+        ];
         $clients = [];
 
         for ($i=0; $i < 50 ; $i++) { 
+            $index = rand (0, count($images)-1);
             $clients[] = [
                     'id'            =>  $i,
                     'name'          =>  $users[$index] . ' ' . $i,
@@ -38,7 +43,7 @@ class ClientsController extends Controller
                     'cin'           =>  'LF19634',
                     'passport'      =>  '123456',
                     'photo'         =>  $images[$index],
-                    'status'        =>  rand (0, 2),
+                    'status'        =>  $client_status[ rand (0, 2) ],
                     'ca'            =>  '154 400 MAD',
                     'credit'        =>  '5 000 MAD'
             ];

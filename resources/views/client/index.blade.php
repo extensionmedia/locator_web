@@ -38,17 +38,17 @@
 
     </div>
 
-    <div class="rounded-lg border-t-2 border-b-2 border-pink-200 bg-red-500 overflow-hidden">
-        <table class="w-full bg-white">
+    <div class="shadow">
+        <table class="w-full bg-white text-xs">
             <thead>
                 <tr class="bg-gray-200 py-2 text-xs font-normal uppercase">
-                    <th class="py-3 w-16">Img</th>
-                    <th class="py-3 ">Matricule</th>
-                    <th class="py-3 text-left">Marque</th>
-                    <th class="py-3 text-center">Carburant</th>
+                    <th class="py-3 w-20">Img</th>
+                    <th class="py-3 text-left">Client</th>
+                    <th class="py-3 text-left">Téléphone</th>
+                    <th class="py-3 text-center">Ville</th>
                     <th class="py-3">Status</th>
                     <th class="py-3 text-right pr-2">Locations</th>
-                    <th class="py-3 text-right pr-2">Dépenses</th>
+                    <th class="py-3 text-right pr-2">Crédit</th>
                     <th class="py-3"></th>
                 </tr>
             </thead>
@@ -56,31 +56,19 @@
                 @foreach ($clients as $client)
                     <tr class="border-b hover:bg-gray-100" style="transition: all .3s">
                         <td class="py-1" style="min-width: 60px">
-                            <img class="object-cover w-12 h-12 rounded-full mx-auto" src="{{ $client['photo'] }}">
+                            <img class="object-cover w-10 h-10 rounded-full mx-auto" src="{{ $client['photo'] }}">
                         </td>
-                        <td class="w-28">
+                        <td>
                             {{ $client['name'] }} 
                         </td>
-                        <td class="">
+                        <td class="w-28">
                                 {{ $client['telephone'] }} 
                         </td>
                         <td class="w-28 text-center">
                             {{ $client['city'] }}
                         </td>
                         <td class="w-28 text-center">
-                            @if ($client['status'] == 1)
-                                <div class="inline py-1 px-2 text-xs bg-green-200 text-green-700 border-green-400 text-center rounded-xl border">
-                                    Disponible
-                                </div>   
-                            @elseif ($client['status'] == 0)
-                                <div class="inline py-1 px-2 text-xs bg-red-200 text-red-700 border-red-400 text-center rounded-xl border">
-                                    Location
-                                </div>                 
-                            @else
-                                <div class="inline py-1 px-2 text-xs bg-gray-200 text-gray-700 border-gray-400 text-center rounded-xl border">
-                                    En Panne
-                                </div> 
-                            @endif
+                            {!! $client['status'] !!}
                         </td>
                         <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2">5.124.450 MAD</td>
                         <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">45.900 MAD</td>
