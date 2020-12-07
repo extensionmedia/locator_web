@@ -1,5 +1,5 @@
 <div>
-    <div class="py-4 lg:p-4 flex items-center justify-between">
+    <div class="py-4 flex items-center justify-between">
         <div class="">
             <button class="btn btn-primary"> <i class="fas fa-plus"></i> Ajouter
         </div>
@@ -30,7 +30,7 @@
         </div>
     </div>
     @if ($style === 'list')
-        <div class="rounded-lg border-t-2 border-b-2 border-pink-200 bg-red-500 overflow-hidden">
+        <div class="shadow">
             <table class="w-full bg-white">
                 <thead>
                     <tr class="bg-gray-200 py-2 text-xs font-normal uppercase">
