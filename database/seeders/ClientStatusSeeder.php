@@ -13,6 +13,7 @@ class ClientStatusSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('client_status')->delete();
         DB::table('client_status')->insert([
             [
                 'client_status'   => 'Disponible',

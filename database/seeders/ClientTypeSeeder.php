@@ -14,6 +14,7 @@ class ClientTypeSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('client_type')->delete();
         DB::table('client_type')->insert([
             [
                 'client_type'   => 'Particulier',
