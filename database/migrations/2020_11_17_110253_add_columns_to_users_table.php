@@ -20,10 +20,6 @@ class AddColumnsToUsersTable extends Migration
             $table->boolean('status');
             $table->foreignId('profile_id');
             $table->foreignId('entreprise_id');
-
-            $table->foreign('entreprise_id')->references('id')->on('entreprise');
-            $table->foreign('profile_id')->references('id')->on('user_profiles');
-
         });
     }
 

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use DB;
 class ClientStatusSeeder extends Seeder
 {
     /**
@@ -19,7 +19,7 @@ class ClientStatusSeeder extends Seeder
                 'is_default'    =>  1               
             ],
             [
-                'client_status'   => 'Liste ',
+                'client_status'   => 'Liste Noire',
                 'is_default'    =>  0                
             ],
             [
