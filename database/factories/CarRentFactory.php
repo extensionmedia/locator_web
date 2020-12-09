@@ -25,7 +25,7 @@ class CarRentFactory extends Factory
             'user_id'                           =>  1,
             'car_id'                            =>  1,
             'client_id'                         =>  $this->faker->numberBetween($min = 1, $max = 65),
-            'car_rent_status_id'                =>  1,
+            'car_rent_status_id'                =>  $this->faker->numberBetween($min = 1, $max = 4),
             'car_rent_status_date'              =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'car_rent_start_date'               =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'car_rent_end_date'                 =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),

@@ -13,7 +13,7 @@ class CreateCarRentStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('car_rent_status', function (Blueprint $table) {
+        Schema::create('car_rent_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('car_rent_status');
             $table->boolean('is_default')->default(0);
@@ -29,6 +29,6 @@ class CreateCarRentStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('car_rent_status');
+        Schema::dropIfExists('car_rent_statuses');
     }
 }

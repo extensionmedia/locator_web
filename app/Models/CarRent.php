@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class CarRent extends Model{
     use HasFactory;
 
-    public function status(){
-        return $this->hasOne(CarRentStatus::class, 'id','car_rent_status_id');
+    public function car_rent_status(){
+        return $this->belongsTo(CarRentStatus::class);
+    }
+
+    public function client(){
+        return $this->belongsTo(Client::class);
     }
 }
