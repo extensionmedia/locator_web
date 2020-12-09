@@ -16,8 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ClientTypeSeeder::class,
             ClientStatusSeeder::class,
-            ClientCategorySeeder::class
+            ClientCategorySeeder::class,
+            CarRentSeeder::class
         ]);
         \App\Models\Client::factory(65)->create();
+        \App\Models\CarRent::factory(1248)->create();
     }
 }

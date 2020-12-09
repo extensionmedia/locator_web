@@ -70,7 +70,7 @@
                         <td class="w-28 text-center">
                             {!! $client['status'] !!}
                         </td>
-                        <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2"> {{ number_format($client->client_total_rent, 2) }} </td>
+                        <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2"> {{ number_format($client->rents()->sum('car_rent_total'), 2) }} </td>
                         <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">{{ number_format($client->client_total_rent-$client->client_total_accompte, 2) }} </td>
                         <td class="w-14 text-center">
                             <form class="m-0" method="POST" action="{{ route('client.edit', ['client'=>1]) }}">
