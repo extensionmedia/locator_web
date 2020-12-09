@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
             CarRentSeeder::class
         ]);
         \App\Models\Client::factory(65)->create();
-        \App\Models\CarRent::factory(1248)->create();
+        \App\Models\CarRent::factory(7248)->create();
     }
 }
