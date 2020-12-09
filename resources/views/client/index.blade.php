@@ -56,22 +56,22 @@
                 @foreach ($clients as $client)
                     <tr class="border-b hover:bg-gray-100" style="transition: all .3s">
                         <td class="py-1" style="min-width: 60px">
-                            <img class="object-cover w-10 h-10 rounded-full mx-auto" src="{{ $client['photo'] }}">
+                            <img class="object-cover w-10 h-10 rounded-full mx-auto" src="{{ $client->client_photo_profile }}">
                         </td>
                         <td>
-                            {{ $client['name'] }} 
+                            {{ $client->client_name }} 
                         </td>
                         <td class="w-28">
-                                {{ $client['telephone'] }} 
+                                {{ $client->client_telephone }} 
                         </td>
                         <td class="w-28 text-center">
-                            {{ $client['city'] }}
+                            {{ $client->client_city }}
                         </td>
                         <td class="w-28 text-center">
                             {!! $client['status'] !!}
                         </td>
-                        <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2">5.124.450 MAD</td>
-                        <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">45.900 MAD</td>
+                        <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2"> {{ number_format($client->client_total_rent, 2) }} </td>
+                        <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">{{ number_format($client->client_total_rent-$client->client_total_accompte, 2) }} </td>
                         <td class="w-14 text-center">
                             <form class="m-0" method="POST" action="{{ route('client.edit', ['client'=>1]) }}">
                                 @csrf()
@@ -82,6 +82,38 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
 
+    </div>
+    <div class="py-3 text-center max-w-full overflow-auto">
+        <ul class="items-center">
+            @if($clients->onFirstPage())
+                <li class="inline-block rounded border bg-gray-100"><i class="fas fa-angle-left"></i></li>
+            @else
+                <li class="inline-block">
+                    <a class="inline-block rounded border bg-gray-200 hover:bg-gray-200" href="{{ $clients->previousPageUrl() }}"><i class="fas fa-angle-left"></i></a>
+                </li>
+            @endif
+            @foreach ($clients->getUrlRange(1,$clients->lastPage()) as $page=>$url)
+                @if ( $page == $clients->currentPage() )
+                    <li class="inline-block rounded border bg-gray-100">{{$page}}</li>
+                @else
+                    <li class="inline-block">
+                        <a class="inline-block rounded border bg-gray-100 hover:bg-gray-200" href="{{ $url }}">{{$page}}</a>
+                    </li>                
+                @endif
+            @endforeach
+
+            
+            
+            @if($clients->hasMorePages())
+                
+                <li class="inline-block">
+                    <a class="inline-block rounded border bg-gray-100 hover:bg-gray-200" href="{{ $clients->nextPageUrl() }}"><i class="fas fa-angle-right"></i></a>
+                </li>
+            @else
+                <li class="inline-block rounded border bg-gray-500"><i class="fas fa-angle-right"></i></li>
+            @endif
+
+        </ul>
+    </div>
 @endsection

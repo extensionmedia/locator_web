@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,5 +18,6 @@ class DatabaseSeeder extends Seeder
             ClientStatusSeeder::class,
             ClientCategorySeeder::class
         ]);
+        \App\Models\Client::factory(65)->create();
     }
 }
