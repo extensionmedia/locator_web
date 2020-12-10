@@ -15,7 +15,7 @@ class CreateCarBrandsTable extends Migration
     {
         Schema::create('car_brands', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('car_brand');
         });
     }
 

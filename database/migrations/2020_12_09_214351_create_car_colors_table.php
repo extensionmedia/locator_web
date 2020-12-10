@@ -15,7 +15,7 @@ class CreateCarColorsTable extends Migration
     {
         Schema::create('car_colors', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('car_color');
         });
     }
 

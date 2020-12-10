@@ -15,7 +15,8 @@ class CreateCarCarburantsTable extends Migration
     {
         Schema::create('car_carburants', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('car_carburant');
+            $table->boolean('is_default')->default(0);
         });
     }
 

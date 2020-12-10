@@ -17,7 +17,12 @@ class DatabaseSeeder extends Seeder
             ClientTypeSeeder::class,
             ClientStatusSeeder::class,
             ClientCategorySeeder::class,
-            CarRentStatusSeeder::class
+            CarRentStatusSeeder::class,
+            CarCarburantSeeder::class,
+            CarClassSeeder::class,
+            CarColorSeeder::class,
+            CarGearboxSeeder::class,
+            CarPuissanceSeeder::class
         ]);
         \App\Models\Client::factory(65)->create();
         \App\Models\CarRent::factory(563)->create();

@@ -15,7 +15,8 @@ class CreateCarGearboxesTable extends Migration
     {
         Schema::create('car_gearboxes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('car_gearbox');
+            $table->boolean('is_default')->default(0);
         });
     }
 

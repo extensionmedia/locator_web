@@ -15,7 +15,8 @@ class CreateCarPuissancesTable extends Migration
     {
         Schema::create('car_puissances', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('car_puissance');
+            $table->boolean('is_default')->default(0);
         });
     }
 

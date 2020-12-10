@@ -15,7 +15,8 @@ class CreateCarClassesTable extends Migration
     {
         Schema::create('car_classes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('car_class');
+            $table->boolean('is_default')->default(0);
         });
     }
 

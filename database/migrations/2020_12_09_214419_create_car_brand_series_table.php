@@ -15,7 +15,8 @@ class CreateCarBrandSeriesTable extends Migration
     {
         Schema::create('car_brand_series', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('car_brand_id');
+            $table->string('car_brand_serie');
         });
     }
 
