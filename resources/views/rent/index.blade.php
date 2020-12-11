@@ -57,7 +57,7 @@
                 @foreach ($rents as $rent)
                     <tr class="border-b hover:bg-gray-100" style="transition: all .3s">
                         <td class="py-1" style="min-width: 60px">
-                            {{ $rent->car_id }}
+                            {{ Str::upper($rent->car->car_matricule) }}
                         </td>
                         <td>
                             {{ $rent->client->client_name }} {{ $rent->client->client_telephone }} 
@@ -68,8 +68,8 @@
                         <td class="w-28 text-center">
                             {{ $rent->car_rent_end_date }} 
                         </td>
-                        <td class="w-28 text-center">
-                            1 
+                        <td class="w-28 text-center text-2xl">
+                            {{ $rent->car_rent_days }} 
                         </td>
                         <td class="w-28 text-center">
                             {{ $rent->car_rent_status->car_rent_status }}  

@@ -48,24 +48,24 @@
                     @foreach ($cars as $car)
                         <tr class="border-b hover:bg-gray-100" style="transition: all .3s">
                             <td class="py-1" style="min-width: 60px">
-                                <img class="object-cover w-12 h-12 rounded-full mx-auto" src="{{ $car['image'] }}">
+                                <img class="object-cover w-12 h-12 rounded-full mx-auto" src="{{ $car->car_photo }}">
                             </td>
                             <td class="w-28">
                                 <div class="bg-gray-800 text-gray-100 rounded-lg py-1 px-2 text-xs w-24 text-center">
-                                    {{ $car['matricule'] }} 
+                                    {{ $car->car_matricule }} 
                                 </div>
                             </td>
                             <td class="">
                                 <span class="text-gray-800 text-sm"> 
-                                    {{ $car['marque'] }} 
+                                    {{ $car->brand->car_brand }} 
                                 </span>
                                 <span class="text-gray-800 text-xs"> 
-                                    {{ $car['serie'] }} 
+                                    {{ $car->brandSerie->car_brand_serie }} 
                                 </span>
                             </td>
                             <td class="w-28 text-center">
                                 <span class="text-gray-800 text-xs font-bold"> 
-                                    {{ $car['carburant'] }} 
+                                    {{ $car->carburant->car_carburant}} 
                                 </span>
                             </td>
                             <td class="w-28 text-center">
@@ -83,7 +83,9 @@
                                     </div> 
                                 @endif
                             </td>
-                            <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2">5.124.450 MAD</td>
+                            <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2">
+                                @money( $car->rents->sum('car_rent_total') - $car->rents->sum('car_rent_discount'))
+                            </td>
                             <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">45.900 MAD</td>
                             <td class="w-14 text-center">
                                 <form class="m-0" method="POST" action="{{ route('car.edit', ['car'=>1]) }}">
@@ -101,17 +103,17 @@
             @foreach ($cars as $car)
             <a href="" class="col-span-1 card pb-0 rounded-xl m-0 shadow-md relative cursor-pointer hover:shadow-lg 
             transition duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-100">
-                    <div class="absolute shadow-lg border top-0 right-0 p-2 rounded-full m-4" style="background-color: {{ $car['color'] }}"></div>
+                    <div class="absolute shadow-lg border top-0 right-0 p-2 rounded-full m-4" style="background-color: {{ $car->color->car_color_code }}"></div>
                     <div class="bg-gray-800 text-gray-100 rounded-lg py-1 px-2 text-xs inline">
-                        {{ $car['matricule'] }}
+                        {{ Str::upper( $car->car_matricule ) }}
                     </div>
 
-                    <img class="object-cover w-16 h-16 mx-auto rounded-full cursor-pointer my-2" src="{{ $car['image'] }}">
+                    <img class="object-cover w-16 h-16 mx-auto rounded-full cursor-pointer my-2" src="{{ $car->car_photo }}">
                     
                     <div class="text-center text-gray-800 text-sm">
-                        <h1 class="inline">{{ $car['marque'] }}</h1>
-                        <span class="text-gray-600 text-xs">{{ $car['serie'] }}</span>  
-                        <h1 class="">{{ $car['carburant'] }}</h1>                  
+                        <h1 class="inline">{{ $car->brand->car_brand }}</h1>
+                        <span class="text-gray-600 text-xs">{{ $car->brandSerie->car_brand_serie }}</span>  
+                        <h1 class="">{{ $car->carburant->car_carburant }}</h1>                  
                     </div>
                     @if ($car['status'] == 1)
                         <div class="my-2 py-1 text-xs bg-green-200 text-green-700 border-green-400 text-center rounded-xl border mx-auto w-20">
@@ -131,7 +133,7 @@
 
                     <div class="flex items-center justify-between py-4">
                         <div class="text-xs text-gray-400">
-                            <i class="far fa-calendar-alt"></i> Nov. 15, 2019
+                            <i class="far fa-calendar-alt"></i> {{ Carbon\Carbon::parse($car->car_start_date)->format('d, M Y') }}
                         </div>
                     </div>
 

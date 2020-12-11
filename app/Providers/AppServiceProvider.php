@@ -27,7 +27,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-
+        Blade::directive('money', function ($amount) {
+            return "<?= number_format($amount, 2); ?>";
+        });
         Str::macro('money', function ($amount, $symbol = 'MAD'){
             return number_format($amount, 2).$symbol;
         });

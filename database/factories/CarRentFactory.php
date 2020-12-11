@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\CarRent;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 class CarRentFactory extends Factory
 {
@@ -19,16 +20,22 @@ class CarRentFactory extends Factory
      *
      * @return array
      */
-    public function definition()
-    {
+    public function definition(){
+        $start = $this->faker->date($format = 'Y-m-d', $max = 'now');
+        $end = $this->faker->date($format = 'Y-m-d', $max = $start);
+
+        $date = Carbon::parse($start);
+        
+        $diff = $date->diffInDays($end);
         return [
             'user_id'                           =>  1,
             'car_id'                            =>  $this->faker->numberBetween($min = 1, $max = 13),
             'client_id'                         =>  $this->faker->numberBetween($min = 1, $max = 65),
             'car_rent_status_id'                =>  $this->faker->numberBetween($min = 1, $max = 4),
             'car_rent_status_date'              =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'car_rent_start_date'               =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'car_rent_end_date'                 =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'car_rent_start_date'               =>  $start,
+            'car_rent_end_date'                 =>  $end,
+            'car_rent_days'                     =>  $diff,
             'car_rent_total'                    =>  $this->faker->numberBetween($min = 1000, $max = 45000),
             'car_rent_discount'                 =>  $this->faker->numberBetween($min = 0, $max = 500),
             'car_rent_days'                     =>  $this->faker->numberBetween($min = 2, $max = 90),

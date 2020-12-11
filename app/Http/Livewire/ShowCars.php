@@ -6,12 +6,11 @@ use Livewire\Component;
 use App\Models\Car;
 class ShowCars extends Component{
 
-    public $style = 'grid';
+    public $style = 'list';
     public $cars = [];
 
     public function render(){
-        $cars = new Car;
-        $this->cars = $cars->getCars();
+        $this->cars = Car::all();
         return view('livewire.show-cars');
     }
 
