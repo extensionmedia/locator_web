@@ -16,15 +16,27 @@ class CarClassSeeder extends Seeder
         DB::table('car_classes')->delete();
         DB::table('car_classes')->insert([
             [
-                'car_class'   => 'Familly',
+                'car_class'   => 'ECONOMIQUE',
                 'is_default'    =>  1
             ],
             [
-                'car_class'   => 'Tout Terrain',
+                'car_class'   => 'SPORT',
                 'is_default'    =>  0
             ],
             [
-                'car_class'   => 'Camionette',
+                'car_class'   => 'MINIBUS',
+                'is_default'    =>  0
+            ],
+            [
+                'car_class'   => 'LUXURY',
+                'is_default'    =>  1
+            ],
+            [
+                'car_class'   => 'PICKUP',
+                'is_default'    =>  0
+            ],
+            [
+                'car_class'   => 'TOUT TERRAIN',
                 'is_default'    =>  0
             ]
         ]);

@@ -16,15 +16,18 @@ class CarPuissanceSeeder extends Seeder
         DB::table('car_puissances')->delete();
         DB::table('car_puissances')->insert([
             [
-                'car_puissance'   => '5 Cv',
-                'is_default'    =>  1
-            ],
-            [
-                'car_puissance'   => '7 Cv',
+                'car_puissance'   => '5 CV',
+                'is_default'    =>  0
+            ],[
+                'car_puissance'   => '6 Cv',
                 'is_default'    =>  0
             ],
             [
-                'car_puissance'   => '8 Cv',
+                'car_puissance'   => '7 CV',
+                'is_default'    =>  1
+            ],
+            [
+                'car_puissance'   => '8 CV',
                 'is_default'    =>  0
             ]
         ]);

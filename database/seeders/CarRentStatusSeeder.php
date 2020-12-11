@@ -17,11 +17,15 @@ class CarRentStatusSeeder extends Seeder
         DB::table('car_rent_statuses')->delete();
         DB::table('car_rent_statuses')->insert([
             [
-                'car_rent_status'   => 'Reservation',
+                'car_rent_status'   => 'Réservation',
                 'is_default'    =>  1
             ],
             [
                 'car_rent_status'   => 'Location',
+                'is_default'    =>  0
+            ],
+            [
+                'car_rent_status'   => 'Sous-Location',
                 'is_default'    =>  0
             ],
             [
