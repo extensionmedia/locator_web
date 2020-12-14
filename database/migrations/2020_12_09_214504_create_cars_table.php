@@ -28,6 +28,15 @@ class CreateCarsTable extends Migration
             $table->float('car_prix_achat')->default('0');
             $table->float('car_prix_vente')->default('0');
 
+            $table->float('car_rent_price_day')->default('0');
+            $table->float('car_rent_price_2days')->default('0');
+            $table->float('car_rent_price_3days')->default('0');
+            $table->float('car_rent_price_4days')->default('0');
+            $table->float('car_rent_price_5days')->default('0');
+            $table->float('car_rent_price_6days')->default('0');
+            $table->float('car_rent_price_week')->default('0');
+            $table->float('car_rent_price_month')->default('0');
+            
             $table->string('car_matricule')->nullable();
             $table->string('car_matricule_w')->nullable();
 
