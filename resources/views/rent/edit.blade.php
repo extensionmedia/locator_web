@@ -5,7 +5,19 @@
 
 @section('content')
 
-    <!-- Photo Profile -->
+    <!-- Rent Dates -->
+    <div class="flex items-center relative gap-3 mt-2 xl:w-3/4 xl:mx-auto">
+        <div class="card w-64 m-0 text-center mx-auto">
+            <div class="text-4xl font-bold text-gray-800">
+                {{ $rent->car_rent_days }}
+            </div>
+            <div class="flex gap-2">
+                <div class="flex-1 border rounded bg-green-200 text-green-600 text-xs font-bold py-1">{{ $rent->car_rent_start_date }}</div>
+                <div class="flex-1 border rounded bg-red-200 text-red-600 text-xs font-bold py-1">{{ $rent->car_rent_end_date }}</div>
+            </div>
+        </div>
+    </div>
+    <!-- Rent Dates -->
     <div class="card flex items-center justify-between relative xl:w-3/4 xl:mx-auto">
         <div class="flex items-center">
             <img class="object-cover w-24 h-24 rounded-full cursor-pointer" src="{{ $rent->car->car_photo }}">
@@ -19,7 +31,6 @@
             <i class="fas fa-check"></i> Image a été modifié
         </div>
     </div>
-
     <!-- Rent Details -->
     <div class="card xl:w-3/4 xl:mx-auto">
         <h1 class="text-lg font-bold text-gray-600 mb-4 mt-2">{{ __('Locations Details') }}</h1>
