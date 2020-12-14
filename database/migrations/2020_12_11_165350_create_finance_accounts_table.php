@@ -18,8 +18,8 @@ class CreateFinanceAccountsTable extends Migration
             $table->string('finance_account_name');
             $table->float('finance_account_solde_initial')->default(0);
             $table->float('finance_account_solde_minimum')->default(0);
-            $table->float('finance_account_status')->default(0);
-            $table->float('finance_account_is_default')->default(0);
+            $table->boolean('finance_account_is_active')->default(0);
+            $table->boolean('finance_account_is_default')->default(0);
         });
     }
 

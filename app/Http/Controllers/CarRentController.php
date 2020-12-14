@@ -11,4 +11,8 @@ class CarRentController extends Controller
         $carRents = CarRent::orderBy('car_rent_end_date')->paginate(50);
         return view('rent.index', ['rents'=>$carRents]);
     }
+
+    public function edit(CarRent $rent){
+        return view('rent.edit')->with(['rent'=> $rent]);
+    }
 }

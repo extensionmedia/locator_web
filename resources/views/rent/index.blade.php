@@ -57,7 +57,7 @@
                 @foreach ($rents as $rent)
                     <tr class="border-b hover:bg-gray-100" style="transition: all .3s">
                         <td class="py-1" style="min-width: 60px">
-                            {{ Str::upper($rent->car->car_matricule) }}
+                            {{ Str::upper($rent->car->car_matricule) . ' id: ' . $rent->id }}
                         </td>
                         <td>
                             {{ $rent->client->client_name }} {{ $rent->client->client_telephone }} 
@@ -74,10 +74,10 @@
                         <td class="w-28 text-center">
                             {{ $rent->car_rent_status->car_rent_status }}  
                         </td>
-                        <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2"> {{ number_format($rent->car_rent_total, 2) }} </td>
-                        <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">{{ number_format($rent->car_rent_discount, 2) }} </td>
+                        <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2"> {{ number_format($rent->paiements->sum('account_mouvement_in'), 2) }} </td>
+                        <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">{{ number_format($rent->depenses->sum('account_mouvement_out'), 2) }} </td>
                         <td class="w-14 text-center">
-                            <form class="m-0" method="POST" action="{{ route('rent.edit', ['rent'=>1]) }}">
+                            <form class="m-0" method="POST" action="{{ route('rent.edit', ['rent'=>$rent->id]) }}">
                                 @csrf()
                                 <button type="submit" class="btn"><i class="fas fa-ellipsis-h"></i></button>
                             </form>

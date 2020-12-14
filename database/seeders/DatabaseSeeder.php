@@ -24,10 +24,12 @@ class DatabaseSeeder extends Seeder
             CarGearboxSeeder::class,
             CarPuissanceSeeder::class,
             CarBrandSeeder::class,
-            CarBrandSerieSeeder::class
+            CarBrandSerieSeeder::class,
+            FinanceAccountSeeder::class
         ]);
         \App\Models\Client::factory(65)->create();
         \App\Models\CarRent::factory(563)->create();
         \App\Models\Car::factory(13)->create();
+        \App\Models\FinanceAccountMouvement::factory(763)->create();
     }
 }

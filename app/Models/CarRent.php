@@ -19,4 +19,16 @@ class CarRent extends Model{
     public function car(){
         return $this->belongsTo(Car::class);
     }
+
+    public function mouvements(){
+        return $this->hasMany(FinanceAccountMouvement::class, 'source_id');
+    }
+
+    public function paiements(){
+        return $this->mouvements()->where('source','=', 'Location')->where('account_mouvement_in','>', 0);
+    }
+
+    public function depenses(){
+        return $this->mouvements()->where('source','=', 'Location')->where('account_mouvement_out','>', 0);
+    }
 }
