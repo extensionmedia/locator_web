@@ -15,6 +15,10 @@ class CarRent extends Model{
     public function client(){
         return $this->belongsTo(Client::class);
     }
+    public function secondClient(){
+        return $this->belongsTo(Client::class, 'client_id_2');
+    }
+
 
     public function car(){
         return $this->belongsTo(Car::class);

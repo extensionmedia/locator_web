@@ -20,6 +20,10 @@ class Car extends Model{
         return $this->belongsTo(CarCarburant::class, 'car_carburant_id');
     }
 
+    public function gearbox(){
+        return $this->belongsTo(CarGearbox::class, 'car_gearbox_id');
+    }
+
     public function color(){
         return $this->belongsTo(CarColor::class, 'car_color_id');
     }

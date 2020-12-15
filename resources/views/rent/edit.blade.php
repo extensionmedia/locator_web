@@ -6,84 +6,162 @@
 @section('content')
 
    
-    <div class="flex relative gap-3 mt-2 xl:w-3/4 xl:mx-auto">
+    <div class="flex justify-between relative gap-3 mt-2 xl:w-3/4 xl:mx-auto">
         <!-- Rent Dates -->
-        <div class="w-64 m-0 text-center border">
+        <div class="card w-72 m-0 text-center">
             <div class="text-4xl font-bold text-gray-800">
                 {{ $rent->car_rent_days }}
             </div>
             <div class="flex gap-2">
-                <input class="form-input flex-1 bg-green-200 text-green-600 font-bold" value="{{ $rent->car_rent_start_date }}">
-                <input class="form-input flex-1 bg-red-200 text-red-600 font-bold" value="{{ $rent->car_rent_end_date }}">
+                <input class="form-input text-xs flex-1 bg-orange-200 text-orange-600 text-center font-bold w-full" value="{{ $rent->car_rent_start_date }}">
+                <input class="form-input text-xs flex-1 bg-pink-200 text-pink-600 text-center font-bold w-full" value="{{ $rent->car_rent_end_date }}">
             </div>
         </div>
 
         <!-- Rent Prices -->
-        <div class="flex gap-2 py-7 border">
-            <div class="flex-1">
-                <label class="block">
+        <div class="card m-0 flex items-center gap-2 py-7">
+            <div class="w-36">
+                <label class="block relative">
                     <span class="text-gray-700">Prix / Jours</span>
-                    <input value="{{ number_format($rent->car_rent_total / $rent->car_rent_days) }}" type="number" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                    <input value="{{ ceil($rent->car_rent_total / $rent->car_rent_days) }}" type="number" id="name" name="name" class="form-input mt-1 pr-6 block w-full text-right font-bold" placeholder="0.00">
+                    <span class="absolute top-0 right-0 mt-9 font-light mr-2 text-xs"> MAD</span>
                 </label>
             </div>
-
-            <div class="flex-1">
-                <label class="block">
-                    <span class="text-gray-700">Total</span>
-                    <input value="{{ $rent->car_rent_total }}" type="number" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+            <div class="font-bold pt-6 w-10"> x {{ $rent->car_rent_days }}</div>
+            <div class="w-36">
+                <label class="block text-right relative">
+                    <span class="text-gray-700 text-right">Total</span>
+                    <input value="{{ $rent->car_rent_total }}" type="number" id="name" name="name" class="form-input mt-1 pr-6 block w-full text-right font-bold" placeholder="0.00">
+                    <span class="absolute top-0 right-0 mt-9 font-light mr-2 text-xs"> MAD</span>
                 </label>
             </div>
         </div>        
     </div>
 
-    <!-- Rent Dates -->
-    <div class="card flex items-center justify-between relative xl:w-3/4 xl:mx-auto">
-        <div class="flex items-center">
-            <img class="object-cover w-24 h-24 rounded-full cursor-pointer" src="{{ $rent->car->car_photo }}">
-
-
-        </div>            
-        <button class="upload_image btn btn-primary">
-            <i class="fas fa-cloud-upload-alt"></i> {{ __('Changer Photo') }}
-        </button>
-        <div class="upload_image_message hidden absolute top-0 right-0 bg-green-400 text-white text-xs py-1 px-3 rounded-tl-lg rounded-bl-lg mt-1">
-            <i class="fas fa-check"></i> Image a été modifié
-        </div>
-    </div>
-    <!-- Rent Details -->
+    <!-- Vehicule Detail -->
     <div class="card xl:w-3/4 xl:mx-auto">
-        <h1 class="text-lg font-bold text-gray-600 mb-4 mt-2">{{ __('Locations Details') }}</h1>
+        <h1 class="text-lg font-bold text-gray-600 mb-4 mt-2">{{ __('Vehicule') }}</h1>
         <div class="-mx-4 border-t border-gray-200 mb-6"></div>
 
-        <div class="flex gap-3 mb-3">
+        <div class="flex items-center relative">
+            <img class="object-cover m-auto w-24 h-24 rounded-full cursor-pointer" src="{{ $rent->car->car_photo }}">
+            <div class="absolute text-center w-full">
+                <div class="rounded w-28 m-auto bg-gray-600 text-gray-100 mt-16 py-1 shadow">
+                    {{ $rent->car->car_matricule }}
+                </div>
+            </div>
+        </div>            
+        <div class="flex gap-3 mb-3 mt-3">
             <div class="flex-1">
                 <label class="block">
-                    <span class="text-gray-700">Date Debut</span>
-                    <input value="{{ $rent->car_rent_start_date }}" type="date" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                    <span class="text-gray-700">Marque</span>
+                    <input disabled value="{{ $rent->car->brand->car_brand }}" type="text" id="name" name="name" class="text-xs bg-gray-100 form-input mt-1 block w-full" placeholder="Nom Utilisateur">
                 </label>
             </div>
 
             <div class="flex-1">
                 <label class="block">
-                    <span class="text-gray-700">Date Fin</span>
-                    <input value="{{ $rent->car_rent_end_date }}" type="date" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                    <span class="text-gray-700">Serie</span>
+                    <input disabled value="{{ $rent->car->brandSerie->car_brand_serie }}" type="text" id="name" name="name" class="text-xs bg-gray-100 form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                </label>
+            </div>
+            <div class="flex-1">
+                <label class="block">
+                    <span class="text-gray-700">Carburant</span>
+                    <input disabled value="{{ $rent->car->carburant->car_carburant }}" type="text" id="name" name="name" class="text-xs bg-gray-100 form-input mt-1 block w-full" placeholder="Nom Utilisateur">
                 </label>
             </div>
 
             <div class="flex-1">
                 <label class="block">
-                    <span class="text-gray-700">Jours</span>
-                    <input value="{{ $rent->car_rent_days }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                    <span class="text-gray-700">B. Vitesse</span>
+                    <input disabled value="{{ $rent->car->gearbox->car_gearbox }}" type="text" id="name" name="name" class="text-xs bg-gray-100 form-input mt-1 block w-full" placeholder="Nom Utilisateur">
                 </label>
             </div>
         </div>
-
     </div>
 
+    <div class="flex gap-4 xl:w-3/4 xl:mx-auto">
+        <!-- Rent Details -->
+        <div class="card flex-1 m-0">
+            <h1 class="text-lg font-bold text-gray-600 mb-4 mt-2">{{ __('Client Principal') }}</h1>
+            <div class="-mx-4 border-t border-gray-200 mb-6"></div>
 
+            <label class="block">
+                <span class="text-gray-700">Nom Client</span>
+                <input value="{{ $rent->client->client_name }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Client">
+            </label>
 
-    @dump($rent->paiements)
-    @dump($rent->depenses)
-    @dump($rent->car)
-    @dump($rent->client)
+            <label class="block">
+                <span class="text-gray-700">Téléphone</span>
+                <input value="{{ $rent->client->client_telephone }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Téléphone">
+            </label>
+
+            <div class="flex">
+                <label class="block">
+                    <span class="text-gray-700">N° CIN</span>
+                    <input value="{{ $rent->client->client_cin }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="N° CIN">
+                </label>
+
+                <label class="block">
+                    <span class="text-gray-700">D. Expiration</span>
+                    <input value="{{ $rent->client->client_cin_date_expiration }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Date Expiration">
+                </label>                
+            </div>
+
+            <div class="flex">
+                <label class="block">
+                    <span class="text-gray-700">N° Permis</span>
+                    <input value="{{ $rent->client->client_permis }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="N° Permis">
+                </label>
+
+                <label class="block">
+                    <span class="text-gray-700">D. Expiration</span>
+                    <input value="{{ $rent->client->client_permis_date_expiration }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Date Expiration">
+                </label>                
+            </div>
+        </div>     
+        
+        <!-- Rent Details -->
+        <div class="card flex-1 m-0">
+            <h1 class="text-lg font-bold text-gray-600 mb-4 mt-2">{{ __('Client Secondaire') }}</h1>
+            <div class="-mx-4 border-t border-gray-200 mb-6"></div>
+
+            <label class="block">
+                <span class="text-gray-700">Nom Client</span>
+                <input value="{{ $rent->secondClient->client_name }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Client">
+            </label>
+
+            <label class="block">
+                <span class="text-gray-700">Téléphone</span>
+                <input value="{{ $rent->secondClient->client_telephone }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Téléphone">
+            </label>
+
+            <div class="flex">
+                <label class="block">
+                    <span class="text-gray-700">N° CIN</span>
+                    <input value="{{ $rent->secondClient->client_cin }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="N° CIN">
+                </label>
+
+                <label class="block">
+                    <span class="text-gray-700">D. Expiration</span>
+                    <input value="{{ $rent->secondClient->client_cin_date_expiration }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Date Expiration">
+                </label>                
+            </div>
+
+            <div class="flex">
+                <label class="block">
+                    <span class="text-gray-700">N° Permis</span>
+                    <input value="{{ $rent->secondClient->client_permis }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="N° Permis">
+                </label>
+
+                <label class="block">
+                    <span class="text-gray-700">D. Expiration</span>
+                    <input value="{{ $rent->secondClient->client_permis_date_expiration }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Date Expiration">
+                </label>                
+            </div>
+
+        </div>
+    </div>
+
 @endsection

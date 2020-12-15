@@ -18,6 +18,7 @@ class CreateCarRentsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('car_id');
             $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('client_id_2');
             $table->unsignedBigInteger('car_rent_status_id');
             $table->date('car_rent_status_date');
             $table->date('car_rent_start_date');
