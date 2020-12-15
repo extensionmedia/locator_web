@@ -5,18 +5,37 @@
 
 @section('content')
 
-    <!-- Rent Dates -->
-    <div class="flex items-center relative gap-3 mt-2 xl:w-3/4 xl:mx-auto">
-        <div class="card w-64 m-0 text-center mx-auto">
+   
+    <div class="flex relative gap-3 mt-2 xl:w-3/4 xl:mx-auto">
+        <!-- Rent Dates -->
+        <div class="w-64 m-0 text-center border">
             <div class="text-4xl font-bold text-gray-800">
                 {{ $rent->car_rent_days }}
             </div>
             <div class="flex gap-2">
-                <div class="flex-1 border rounded bg-green-200 text-green-600 text-xs font-bold py-1">{{ $rent->car_rent_start_date }}</div>
-                <div class="flex-1 border rounded bg-red-200 text-red-600 text-xs font-bold py-1">{{ $rent->car_rent_end_date }}</div>
+                <input class="form-input flex-1 bg-green-200 text-green-600 font-bold" value="{{ $rent->car_rent_start_date }}">
+                <input class="form-input flex-1 bg-red-200 text-red-600 font-bold" value="{{ $rent->car_rent_end_date }}">
             </div>
         </div>
+
+        <!-- Rent Prices -->
+        <div class="flex gap-2 py-7 border">
+            <div class="flex-1">
+                <label class="block">
+                    <span class="text-gray-700">Prix / Jours</span>
+                    <input value="{{ number_format($rent->car_rent_total / $rent->car_rent_days) }}" type="number" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                </label>
+            </div>
+
+            <div class="flex-1">
+                <label class="block">
+                    <span class="text-gray-700">Total</span>
+                    <input value="{{ $rent->car_rent_total }}" type="number" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Nom Utilisateur">
+                </label>
+            </div>
+        </div>        
     </div>
+
     <!-- Rent Dates -->
     <div class="card flex items-center justify-between relative xl:w-3/4 xl:mx-auto">
         <div class="flex items-center">
