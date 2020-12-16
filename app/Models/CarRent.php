@@ -35,4 +35,8 @@ class CarRent extends Model{
     public function depenses(){
         return $this->mouvements()->where('source','=', 'Location')->where('account_mouvement_out','>', 0);
     }
+    
+    public function statuses(){
+        return $this->hasMany(StatusOfCarRent::class, 'car_rent_id');
+    }
 }

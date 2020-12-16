@@ -9,7 +9,7 @@
 
 /* Buttons */
 .btn { @apply border py-2 px-4 rounded-lg text-sm text-gray-700; }
-.btn:hover { @apply bg-gray-100; transition: all .3s; }
+.btn:hover { @apply bg-gray-200; transition: all .3s; }
 .btn:focus { @apply outline-none;  }
 .btn:active { @apply bg-gray-300 outline-none; }
 

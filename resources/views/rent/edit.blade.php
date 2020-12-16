@@ -1,24 +1,27 @@
-@extends('layouts.locator');
+@extends('layouts.locator')
 
-@section('title') Location Edit @endsection
-@section('page_title') Modifier @endsection
+@section('title')  Contrat N° : {{ str_pad($rent->id, 6, "0", STR_PAD_LEFT ) }} @endsection
+@section('page_title')  Contrat N° : {{ str_pad($rent->id, 6, "0", STR_PAD_LEFT ) }} @endsection
 
 @section('content')
-    <div class="flex w-full justify-between items-center p-3">
-        <div class="">
-            Contrat N° : {{$rent->id}}
+    <div class="flex justify-between items-center p-3">
+        <div class="flex gap-3">
+            <button class="btn"><i class="far fa-file-alt"></i> Aperçu</button>     
+            <button class="btn"><i class="far fa-file-alt"></i> Paiement</button>         
+            <button class="btn"><i class="far fa-envelope"></i> Email</button>
+            <button class="btn bg-green-400 text-gray-100"><i class="fab fa-whatsapp"></i> Whatsapp</button>
         </div>
-        <div class="flex">
-            <button>Save</button>
-            <button>Quitter</button>
+        <div class="flex gap-3">
+            <button class="btn"><i class="far fa-copy"></i> Dupliquer</button> 
+            <button class="btn btn-primary"><i class="far fa-save"></i> Enregistrer</button>
         </div>
     </div>
-    <div class="flex w-full p-3 gap-3">
+    <div class="flex px-3 gap-3">
 
-        <div class="flex-1">
+        <div class="w-2/3">
             <div class="flex relative gap-3 mb-3">
                 <!-- Rent Dates -->
-                <div class="card w-72 m-0 text-center">
+                <div class="card w-1/2 m-0 text-center">
                     <div class="text-4xl font-bold text-gray-800">
                         {{ $rent->car_rent_days }}
                     </div>
@@ -29,7 +32,7 @@
                 </div>
 
                 <!-- Rent Prices -->
-                <div class="card flex-1 m-0 flex items-center gap-2 py-7">
+                <div class="card w-1/2 m-0 flex items-center gap-2 py-7">
                     <div class="w-36">
                         <label class="block relative">
                             <span class="text-gray-700">Prix / Jours</span>
@@ -175,10 +178,22 @@
             </div>
         </div>
 
-        <div class="w-96">
+        <div class="w-1/3">
             <div class="card m-0">
-                <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Statuts') }}</h1>
+                <div class="flex justify-between items-center">
+                    <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Statuts') }}</h1>
+                    <button class="btn -mt-4 border-0 text-xl text-pink-600 p-1"><i class="far fa-plus-square"></i></button>
+                </div>
                 <div class="-mx-4 border-t border-gray-200 mb-3"></div>
+
+                <div class="">
+                    @foreach ($rent->statuses as $status)
+                        <div class="flex justify-between items-center py-2">
+                            <div class="text-xs font-bold">{{$status->rent_status_date}}</div>
+                            <div class="text-xs ">{{$status->carRentStatus->car_rent_status}}</div>
+                        </div>                        
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
