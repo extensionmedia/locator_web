@@ -190,7 +190,9 @@
                     @foreach ($rent->statuses as $status)
                         <div class="flex justify-between items-center py-2">
                             <div class="text-xs font-bold">{{$status->rent_status_date}}</div>
-                            <div class="text-xs ">{{$status->carRentStatus->car_rent_status}}</div>
+                            <div class="text-xs ">
+                                {!! str_replace('[]', $status->car_rent_status, $status->car_rent_status_icon) !!} 
+                            </div>
                         </div>                        
                     @endforeach
                 </div>

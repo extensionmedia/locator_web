@@ -18,6 +18,7 @@ class CreateCarRentStatusTable extends Migration
             $table->string('car_rent_status');
             $table->boolean('is_default')->default(0);
             $table->string('car_rent_status_color')->default(-1);
+            $table->string('car_rent_status_icon')->nullable();
         });
     }
 

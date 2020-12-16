@@ -72,7 +72,7 @@
                             {{ $rent->car_rent_days }} 
                         </td>
                         <td class="w-28 text-center">
-                            {{ $rent->car_rent_status->car_rent_status }}  
+                            {!! str_replace('[]', $rent->car_rent_status->car_rent_status, $rent->car_rent_status->car_rent_status_icon) !!}  
                         </td>
                         <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2"> {{ number_format($rent->paiements->sum('account_mouvement_in'), 2) }} </td>
                         <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">{{ number_format($rent->depenses->sum('account_mouvement_out'), 2) }} </td>
