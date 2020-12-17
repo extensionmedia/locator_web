@@ -179,7 +179,8 @@
         </div>
 
         <div class="w-1/3">
-            <div class="card m-0">
+            <!-- Rent Statuses -->
+            <div class="card m-0 mb-3">
                 <div class="flex justify-between items-center">
                     <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Statuts') }}</h1>
                     <button class="btn -mt-4 border-0 text-xl text-pink-600 p-1"><i class="far fa-plus-square"></i></button>
@@ -191,7 +192,27 @@
                         <div class="flex justify-between items-center py-2">
                             <div class="text-xs font-bold">{{$status->rent_status_date}}</div>
                             <div class="text-xs ">
-                                {!! str_replace('[]', $status->car_rent_status, $status->car_rent_status_icon) !!} 
+                                {!! str_replace('[]', $status->carRentStatus->car_rent_status, $status->carRentStatus->car_rent_status_icon) !!} 
+                            </div>
+                        </div>                        
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- Rent Paiements -->
+            <div class="card m-0">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Paiements') }}</h1>
+                    <button class="btn -mt-4 border-0 text-xl text-pink-600 p-1"><i class="far fa-plus-square"></i></button>
+                </div>
+                <div class="-mx-4 border-t border-gray-200 mb-3"></div>
+
+                <div class="">
+                    @foreach ($rent->paiements as $paiement)
+                        <div class="flex justify-between items-center py-2">
+                            <div class="text-xs font-bold">{{$paiement->account_mouvement_date}}</div>
+                            <div class="text-xs ">
+                                 @money($paiement->account_mouvement_in)
                             </div>
                         </div>                        
                     @endforeach
