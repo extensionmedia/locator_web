@@ -11,4 +11,8 @@ class FinanceAccountMouvement extends Model{
     public function account(){
         return $this->belongsTo(FinanceAccount::class);
     }
+
+    public function category(){
+        return $this->belongsTo(FinanceAccountMouvementCategory::class, 'finance_account_mouvement_category_id');
+    }
 }

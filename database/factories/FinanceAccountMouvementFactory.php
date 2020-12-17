@@ -20,7 +20,8 @@ class FinanceAccountMouvementFactory extends Factory
      * @return array
      */
     public function definition(){
-        if( $this->faker->numberBetween($min = 0, $max = 1) == '1' ){
+        $in = $this->faker->numberBetween($min = 0, $max = 1);
+        if( $in == '1' ){
             $in = $this->faker->numberBetween($min = 250, $max = 100000);
             $out = 0;
         }else{
@@ -30,16 +31,17 @@ class FinanceAccountMouvementFactory extends Factory
 
 
         return [
-            'finance_account_id'                =>  $this->faker->numberBetween($min = 1, $max = 3),
-            'user_id'                           =>  1,
-            'description'                       =>  $this->faker->text($maxNbChars = 100),
-            'account_mouvement_date'            =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'source'                            =>  $this->faker->randomElement( $array = ['Location', 'Depense', 'Autres'] ),
-            'source_id'                         =>  $this->faker->numberBetween($min = 1, $max = 563),
-            'account_mouvement_in'              =>  $in,
-            'account_mouvement_out'             =>  $out,
-            'created_at'                        =>  now(),
-            'updated_at'                        =>  now()
+            'finance_account_id'                        =>  $this->faker->numberBetween($min = 1, $max = 3),
+            'finance_account_mouvement_category_id'     =>  $in=='1'? $this->faker->numberBetween($min = 1, $max = 2): $this->faker->numberBetween($min = 3, $max = 8),
+            'user_id'                                   =>  1,
+            'description'                               =>  $this->faker->text($maxNbChars = 100),
+            'account_mouvement_date'                    =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'source'                                    =>  $this->faker->randomElement( $array = ['Location', 'Depense', 'Autres'] ),
+            'source_id'                                 =>  $this->faker->numberBetween($min = 1, $max = 563),
+            'account_mouvement_in'                      =>  $in,
+            'account_mouvement_out'                     =>  $out,
+            'created_at'                                =>  now(),
+            'updated_at'                                =>  now()
         ];
     }
 }

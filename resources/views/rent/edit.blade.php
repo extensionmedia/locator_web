@@ -1,7 +1,12 @@
 @extends('layouts.locator')
 
-@section('title')  Contrat N° : {{ str_pad($rent->id, 6, "0", STR_PAD_LEFT ) }} @endsection
-@section('page_title')  Contrat N° : {{ str_pad($rent->id, 6, "0", STR_PAD_LEFT ) }} @endsection
+@section('title') Contrat N° : {{ str_pad($rent->id, 6, "0", STR_PAD_LEFT ) }} @endsection
+@section('page_title') 
+    <a href="{{ URL::previous() }}" class="py-1 px-2 bg-orange-300 text-gray-100 rounded-xl hover:bg-orange-400 mr-2">
+        <i class="fas fa-arrow-left"></i>
+    </a>  
+    Contrat N° : {{ str_pad($rent->id, 6, "0", STR_PAD_LEFT ) }} 
+@endsection
 
 @section('content')
     <div class="flex justify-between items-center p-3">
@@ -209,8 +214,9 @@
 
                 <div class="">
                     @foreach ($rent->paiements as $paiement)
-                        <div class="flex justify-between items-center py-2">
+                        <div class="flex justify-between items-center py-2 border-b">
                             <div class="text-xs font-bold">{{$paiement->account_mouvement_date}}</div>
+                            <div class="text-xs font-bold">{{$paiement->category->finance_account_mouvement_category}}</div>
                             <div class="text-xs ">
                                  @money($paiement->account_mouvement_in)
                             </div>
