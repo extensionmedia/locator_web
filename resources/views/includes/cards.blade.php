@@ -11,10 +11,38 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <?php
             $icons = [
-                ['<i class="fas fa-hand-holding-usd"></i>', '<i class="fas fa-chevron-up"></i>', "24.254 MAD" , 'Recettes'],
-                ['<i class="fas fa-file-contract"></i>', '<i class="fas fa-chevron-up"></i>', "17" , 'Locations'],
-                ['<i class="fas fa-cash-register"></i>', '<i class="fas fa-chevron-down"></i>', "1.254 MAD" , 'Depenses'],
-                ['<i class="far fa-address-card"></i>', '<i class="fas fa-chevron-up"></i>', "3450" , 'Clients']
+                [
+                    '<i class="fas fa-hand-holding-usd"></i>', 
+                    '<i class="fas fa-chevron-up"></i>', 
+                    '<span class="isAjax m-2" data-route="/rent/totalRents" >
+                        <div class="w-16 h-4 bg-gray-200 rounded-xl isAjaxLoading" ></div>
+                    </span>', 
+                    'Recettes'
+                ],
+                [
+                    '<i class="fas fa-file-contract"></i>', 
+                    '<i class="fas fa-chevron-up"></i>', 
+                    '<span class="isAjax m-2" data-route="/rent/countRents" >
+                        <div class="w-16 h-4 bg-gray-200 rounded-xl isAjaxLoading" ></div>
+                    </span>',
+                    'Locations'
+                ],
+                [
+                    '<i class="fas fa-cash-register"></i>', 
+                    '<i class="fas fa-chevron-down"></i>',
+                    '<span class="isAjax m-2" data-route="/rent/totalDepenses" >
+                        <div class="w-16 h-4 bg-gray-200 rounded-xl isAjaxLoading" ></div>
+                    </span>' , 
+                     'Depenses'
+                ],
+                [
+                    '<i class="far fa-address-card"></i>', 
+                    '<i class="fas fa-chevron-up"></i>', 
+                    '<span class="isAjax m-2" data-route="/rent/countClients" >
+                        <div class="w-16 h-4 bg-gray-200 rounded-xl isAjaxLoading" ></div>
+                    </span>' , 
+                    'Clients'
+                ]
             ]
         ?>
         @for ($i = 0; $i < 4; $i++)

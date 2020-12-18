@@ -28,8 +28,18 @@ Route::post('/client/edit/{client}', [App\Http\Controllers\ClientController::cla
 /** Rent Routes */
 Route::get('/rent', [App\Http\Controllers\CarRentController::class, 'index'])->name('rent.index');
 Route::post('/rent/edit/{rent}', [App\Http\Controllers\CarRentController::class, 'edit'])->name('rent.edit');
-
-
+Route::get('/rent/totalRents', function(){
+    return App\Models\FinanceAccountMouvement::where('account_mouvement_in', '>', 0)->sum('account_mouvement_in');
+});
+Route::get('/rent/countRents', function(){
+    return App\Models\CarRent::whereYear('car_rent_start_date', '2019')->count();
+});
+Route::get('/rent/countClients', function(){
+    return App\Models\Client::count();
+});
+Route::get('/rent/totalDepenses', function(){
+    return App\Models\FinanceAccountMouvement::where('account_mouvement_out', '>', 0)->sum('account_mouvement_out');
+});
 Route::get('/comment', function(){
     return view('comment');
 });

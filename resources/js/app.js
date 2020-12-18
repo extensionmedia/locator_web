@@ -28,4 +28,13 @@ $(document).ready(function(){
         });
     });
     
+    setInterval(() => {
+        $('.isAjax').each(function(){
+            if(!$(this).hasClass('loaded')){
+                var route = $(this).attr('data-route');
+                $(this).addClass('loaded').load(route);
+            }
+        });        
+    }, 500);
+
 });

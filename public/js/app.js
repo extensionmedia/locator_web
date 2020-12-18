@@ -19370,6 +19370,14 @@ $(document).ready(function () {
       }, 3000);
     });
   });
+  setInterval(function () {
+    $('.isAjax').each(function () {
+      if (!$(this).hasClass('loaded')) {
+        var route = $(this).attr('data-route');
+        $(this).addClass('loaded').load(route);
+      }
+    });
+  }, 500);
 });
 
 /***/ }),
@@ -19413,8 +19421,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\admin\Desktop\locator_web\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\admin\Desktop\locator_web\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Users\Yassine\Desktop\locator_web\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Yassine\Desktop\locator_web\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
