@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Car;
 
 class DashboardController extends Controller
 {
@@ -46,7 +47,7 @@ class DashboardController extends Controller
         return view('dashboard')
                 ->with(
                     [
-                        'cars'          =>  $cars, 
+                        'cars'          =>  Car::all(), 
                         'days'          =>  $days, 
                         'activities'    =>  $activities,
                         'schedules'     =>  $schedules

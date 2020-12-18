@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\FinanceAccountMouvement;
+use App\Models\FinanceAccountMouvementOut;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FinanceAccountMouvementFactory extends Factory
+class FinanceAccountMouvementOutFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = FinanceAccountMouvement::class;
+    protected $model = FinanceAccountMouvementOut::class;
 
     /**
      * Define the model's default state.
@@ -22,14 +22,14 @@ class FinanceAccountMouvementFactory extends Factory
     public function definition(){
         return [
             'finance_account_id'                        =>  $this->faker->numberBetween($min = 1, $max = 3),
-            'finance_account_mouvement_category_id'     =>  $this->faker->numberBetween($min = 1, $max = 2),
+            'finance_account_mouvement_category_id'     =>  $this->faker->numberBetween($min = 3, $max = 9),
             'user_id'                                   =>  1,
             'description'                               =>  $this->faker->text($maxNbChars = 100),
             'account_mouvement_date'                    =>  $this->faker->date($format = 'Y-m-d', $max = 'now'),
-            'source'                                    =>  $this->faker->randomElement( $array = ['Location', 'Autres'] ),
+            'source'                                    =>  $this->faker->randomElement( $array = ['Depense', 'Autres'] ),
             'source_id'                                 =>  $this->faker->numberBetween($min = 1, $max = 163),
-            'account_mouvement_in'                      =>  $this->faker->numberBetween($min = 250, $max = 50000),
-            'account_mouvement_out'                     =>  0,
+            'account_mouvement_out'                     =>  $this->faker->numberBetween($min = 250, $max = 50000),
+            'account_mouvement_in'                      =>  0,
             'created_at'                                =>  now(),
             'updated_at'                                =>  now()
         ];

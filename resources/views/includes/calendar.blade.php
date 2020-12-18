@@ -34,11 +34,11 @@
                             <div class="-mb-1 flex items-center pl-2 h-12 my-1 border-t border-l border-b bg-white rounded-tl-lg rounded-bl-lg hover:shadow">
                                 <img 
                                     class="object-cover w-8 h-8 rounded-full cursor-pointer" 
-                                    src="{{ $car[0] }}"
+                                    src="{{ $car->car_photo }}"
                                 > 
                                 <div class="text-bold text-sm ml-1">
-                                    <div class="rounded-lg bg-black text-white py-1 px-2 text-xs shadow border" style="background-color:{{ $car[3] }}; color:{{ $car[4] }}">
-                                        {{ $car[2] }}
+                                    <div class="rounded-lg bg-black text-white py-1 px-2 text-xs shadow border" style="background-color:{{ $car->color->car_color_code }}; color:black">
+                                        {{ $car->car_matricule }}
                                     </div>
                                 </div>
                             </div>    
