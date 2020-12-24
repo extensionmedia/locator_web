@@ -183,12 +183,13 @@
             </div>
         </div>
 
+        <!-- Right Section -->
         <div class="w-1/3">
             <!-- Rent Statuses -->
             <div class="card m-0 mb-3">
                 <div class="flex justify-between items-center">
                     <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Statuts') }}</h1>
-                    <button class="btn -mt-4 border-0 text-xl text-pink-600 p-1"><i class="far fa-plus-square"></i></button>
+                    <button class="btn -mt-4 border text-xs text-pink-600 p-1 px-2"><i class="far fa-plus-square"></i> Ajouter</button>
                 </div>
                 <div class="-mx-4 border-t border-gray-200 mb-3"></div>
 
@@ -205,23 +206,77 @@
             </div>
 
             <!-- Rent Paiements -->
-            <div class="card m-0">
+            <div class="card m-0 mb-3">
                 <div class="flex justify-between items-center">
                     <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Paiements') }}</h1>
-                    <button class="btn -mt-4 border-0 text-xl text-pink-600 p-1"><i class="far fa-plus-square"></i></button>
+                    <button class="btn -mt-4 border text-xs text-pink-600 p-1 px-2"><i class="far fa-plus-square"></i> Ajouter</button>
                 </div>
                 <div class="-mx-4 border-t border-gray-200 mb-3"></div>
 
                 <div class="">
-                    @foreach ($rent->paiements as $paiement)
-                        <div class="flex justify-between items-center py-2 border-b">
-                            <div class="text-xs font-bold">{{$paiement->account_mouvement_date}}</div>
-                            <div class="text-xs font-bold">{{$paiement->category->finance_account_mouvement_category}}</div>
-                            <div class="text-xs ">
-                                 @money($paiement->account_mouvement_in)
-                            </div>
+                    @forelse ($rent->paiements as $paiement)
+                        <div class="bg-green-100 border border-green-300 rounded px-2 pb-3 mb-2">
+                            <div class="flex justify-between items-center py-2 ">
+                                <div class="text-xs font-bold flex items-center">
+                                    {{$paiement->account_mouvement_date}}
+                                </div>
+                                <div class="text-xl text-green-700 font-bold">
+                                    @money($paiement->account_mouvement_in)
+                                </div>
+                            </div>   
+                            <div class="text-right -mt-3 pb-2 font-bold">
+                                <div class="text-xs"> {{$paiement->type->payment_type}}</div>
+                            </div>   
+                            <div class="">
+                                <div class="text-xs"> {{$paiement->description}}</div>
+                            </div>  
+                            <div class="">
+                                <div class=""> {{$paiement->category->finance_account_mouvement_category}}</div>
+                            </div>                      
                         </div>                        
-                    @endforeach
+                    @empty
+                        <div class="bg-gray-200 border border-gray-300 rounded p-2 text-gray-600 text-xs">
+                            <i class="fas fa-info-circle"></i> Aucun Paiement
+                        </div>
+                    @endforelse
+
+                </div>
+            </div>
+
+            <!-- Rent Depenses -->
+            <div class="card m-0">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Dépenses') }}</h1>
+                    <button class="btn -mt-4 border text-xs text-pink-600 p-1 px-2"><i class="far fa-plus-square"></i> Ajouter</button>
+                </div>
+                <div class="-mx-4 border-t border-gray-200 mb-3"></div>
+
+                <div class="">
+                    @forelse ($rent->depenses as $paiement)
+                        <div class="bg-pink-100 border border-pink-300 rounded px-2 pb-3 mb-2">
+                            <div class="flex justify-between items-center py-2 ">
+                                <div class="text-xs font-bold flex items-center">
+                                    {{$paiement->account_mouvement_date}}
+                                </div>
+                                <div class="text-xl text-pink-700 font-bold">
+                                    @money($paiement->account_mouvement_out)
+                                </div>
+                            </div>   
+                            <div class="text-right -mt-3 pb-2 font-bold">
+                                <div class="text-xs"> {{$paiement->type->payment_type}}</div>
+                            </div>   
+                            <div class="">
+                                <div class="text-xs"> {{$paiement->description}}</div>
+                            </div>  
+                            <div class="">
+                                <div class=""> {{$paiement->category->finance_account_mouvement_category}}</div>
+                            </div>                      
+                        </div>                        
+                    @empty
+                        <div class="bg-gray-200 border border-gray-300 rounded p-2 text-gray-600 text-xs">
+                            <i class="fas fa-info-circle"></i> Aucun Depense
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>

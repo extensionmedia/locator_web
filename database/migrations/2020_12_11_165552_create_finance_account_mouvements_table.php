@@ -18,6 +18,7 @@ class CreateFinanceAccountMouvementsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('finance_account_id');
             $table->unsignedBigInteger('finance_account_mouvement_category_id');
+            $table->unsignedBigInteger('payment_type_id');
             $table->string('description');
             $table->date('account_mouvement_date');
             $table->string('source');

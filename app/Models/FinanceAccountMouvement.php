@@ -15,4 +15,8 @@ class FinanceAccountMouvement extends Model{
     public function category(){
         return $this->belongsTo(FinanceAccountMouvementCategory::class, 'finance_account_mouvement_category_id');
     }
+
+    public function type(){
+        return $this->belongsTo(PaymentType::class, 'payment_type_id');
+    }
 }

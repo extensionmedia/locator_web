@@ -42,7 +42,7 @@
         <table class="w-full bg-white text-xs">
             <thead>
                 <tr class="bg-gray-200 py-2 text-xs font-normal uppercase">
-                    <th class="py-3 w-20">Vehicule</th>
+                    <th class="py-3 w-24">Vehicule</th>
                     <th class="py-3 text-left">Client</th>
                     <th class="py-3 text-left">Debut</th>
                     <th class="py-3 text-center">Fin</th>
@@ -56,11 +56,16 @@
             <tbody>
                 @foreach ($rents as $rent)
                     <tr class="border-b hover:bg-gray-100" style="transition: all .3s">
-                        <td class="py-1" style="min-width: 60px">
-                            {{ Str::upper($rent->car->car_matricule) . ' id: ' . $rent->id }}
+                        <td class="py-2" style="min-width: 60px">
+                            {{ Str::upper($rent->car->car_matricule) }}
                         </td>
-                        <td>
-                            {{ $rent->client->client_name }} {{ $rent->client->client_telephone }} 
+                        <td class="py-1">
+                            <div class="">
+                                {{ $rent->client->client_name }} 
+                            </div>
+                            <div class="py-1 text-black">
+                                <i class="fas fa-phone-square-alt"></i> {{ $rent->client->client_telephone }} 
+                            </div>
                         </td>
                         <td class="w-28">
                             {{ $rent->car_rent_start_date }} 

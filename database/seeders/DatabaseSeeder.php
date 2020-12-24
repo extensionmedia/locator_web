@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             CarBrandSeeder::class,
             CarBrandSerieSeeder::class,
             FinanceAccountSeeder::class,
-            FinanceAccountMouvementCategorySeeder::class
+            FinanceAccountMouvementCategorySeeder::class,
+            PaymentTypeSeeder::class
         ]);
         \App\Models\Client::factory(65)->create();
         \App\Models\CarRent::factory(163)->create();
