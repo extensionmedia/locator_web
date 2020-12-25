@@ -45,7 +45,6 @@
                             <span class="absolute top-0 right-0 mt-9 font-light mr-2 text-xs"> MAD</span>
                         </label>
                     </div>
-                    <div class="font-bold pt-6 w-10"> x {{ $rent->car_rent_days }}</div>
                     <div class="w-36">
                         <label class="block text-right relative">
                             <span class="text-gray-700 text-right">Total</span>

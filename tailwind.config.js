@@ -12,18 +12,22 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
-        },
+            colors: {
+                'bg-modal': 'rgba(245, 255, 255, 0.5)',
+            }
+        }
     },
 
     variants: {
         opacity: ['responsive', 'hover', 'focus', 'disabled', 'active'],
         extend: {
             backgroundColor: ['checked'],
+            backgroundOpacity: ['active'],
           }
     },
 
     plugins: [
         require('@tailwindcss/ui'),
         require('@tailwindcss/custom-forms'),
-    ],
+    ]
 };

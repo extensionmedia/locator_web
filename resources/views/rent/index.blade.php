@@ -2,6 +2,11 @@
 @section('title') {{ __('Liste Locations') }} @endsection
 @section('page_title') {{ __('Liste Locations') }} @endsection
 @section('content')
+
+    <div class="z-10 fixed top-0 left-0 w-full h-full bg-purple-600 bg-opacity-50">
+        Model
+    </div>
+
     <div class="py-4 flex items-center justify-between">
         <div class="flex gap-3">
             <div class="relative">
