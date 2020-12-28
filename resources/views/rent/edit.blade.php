@@ -25,39 +25,8 @@
         <div class="flex px-3 gap-3">
             <!-- Left Section -->
             <div class="w-2/3">
-                <div class="flex relative gap-3 mb-3">
-                    <!-- Rent Dates -->
-                    <div class="card w-1/2 m-0 text-center">
-                        <div class="text-4xl font-bold text-gray-800">
-                            {{ $rent->car_rent_days }}
-                        </div>
-                        <div class="flex gap-2">
-                            <input class="form-input text-xs flex-1 bg-orange-200 text-orange-600 text-center font-bold w-full" value="{{ $rent->car_rent_start_date }}">
-                            <input class="form-input text-xs flex-1 bg-pink-200 text-pink-600 text-center font-bold w-full" value="{{ $rent->car_rent_end_date }}">
-                        </div>
-                    </div>
-
-                    <!-- Rent Prices -->
-                    <div class="card w-1/2 m-0 flex items-center gap-2 py-7">
-                        <div class="w-36">
-                            <label class="block relative">
-                                <span class="text-gray-700">Prix / Jours</span>
-                                <input value="{{ ceil($rent->car_rent_total / $rent->car_rent_days) }}" type="number" id="name" name="name" class="form-input mt-1 pr-6 block w-full text-right font-bold" placeholder="0.00">
-                                <span class="absolute top-0 right-0 mt-9 font-light mr-2 text-xs"> MAD</span>
-                            </label>
-                        </div>
-                        <div class="w-36">
-                            <label class="block text-right relative">
-                                <span class="text-gray-700 text-right">Total</span>
-                                <input value="{{ $rent->car_rent_total }}" type="number" id="name" name="name" class="form-input mt-1 pr-6 block w-full text-right font-bold" placeholder="0.00">
-                                <span class="absolute top-0 right-0 mt-9 font-light mr-2 text-xs"> MAD</span>
-                            </label>
-                        </div>
-                    </div>        
-                </div>
-
-                <!-- Vehicule Detail -->
-                <div class="card m-0 mb-3">
+                <!-- Vehicule -->
+                <div class="card m-0 mb-3 relative">
                     <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Vehicule') }}</h1>
                     <div class="-mx-4 border-t border-gray-200 mb-3"></div>
 
@@ -97,11 +66,15 @@
                             </label>
                         </div>
                     </div>
+                    <div class="absolute top-0 right-0 m-3">
+                        <button class="btn py-1 px-2"><i class="fas fa-ellipsis-h"></i></button>
+                    </div>
                 </div>
 
+                <!-- Conducteurs -->
                 <div class="flex gap-3 mb-3">
-                    <!-- Rent Details -->
-                    <div class="card flex-1 m-0">
+                    <!-- Conducteurs Principal -->
+                    <div class="card flex-1 m-0 relative">
                         <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Client Principal') }}</h1>
                         <div class="-mx-4 border-t border-gray-200 mb-3"></div>
 
@@ -138,10 +111,13 @@
                                 <input value="{{ $rent->client->client_permis_date_expiration }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Date Expiration">
                             </label>                
                         </div>
+                        <div class="absolute top-0 right-0 m-3">
+                            <button class="btn py-1 px-2"><i class="fas fa-ellipsis-h"></i></button>
+                        </div>
                     </div>     
                     
-                    <!-- Rent Details -->
-                    <div class="card flex-1 m-0">
+                    <!-- Conducteurs Secondaire -->
+                    <div class="card flex-1 m-0 relative">
                         <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Client Secondaire') }}</h1>
                         <div class="-mx-4 border-t border-gray-200 mb-3"></div>
 
@@ -178,18 +154,33 @@
                                 <input value="{{ $rent->secondClient->client_permis_date_expiration }}" type="text" id="name" name="name" class="form-input mt-1 block w-full" placeholder="Date Expiration">
                             </label>                
                         </div>
-
+                        <div class="absolute top-0 right-0 m-3">
+                            <button class="btn py-1 px-2"><i class="fas fa-ellipsis-h"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Right Section -->
             <div class="w-1/3">
+                <div class="card m-0 mb-3 border border-pink-400 relative">
+                    <div class="text-4xl text-center font-extralight">@money($rent->car_rent_total) MAD</div>
+                    <div class="text-xs text-center font-light -mt-2 text-pink-400 font-bold">@money(ceil($rent->car_rent_total / $rent->car_rent_days)) MAD / Jr</div>
+                    <div class="flex items-center w-64 mt-6 mx-auto">
+                        <div class="w-24 text-xs text-center py-1 font-bold rounded px-2 bg-green-200 text-green-800">{{ $rent->car_rent_start_date }}</div>
+                        <div class="flex-1 border-b text-center">
+                                {{ $rent->car_rent_days }}
+                        </div>
+                        <div class="w-24 text-xs text-center py-1 font-bold rounded px-2 bg-red-200 text-red-800">{{ $rent->car_rent_end_date }}</div>
+                    </div>
+                    <div class="absolute top-0 right-0 m-3">
+                        <button class="btn py-1 px-2"><i class="fas fa-ellipsis-h"></i></button>
+                    </div>
+                </div>
                 <!-- Rent Statuses -->
-                <div class="card m-0 mb-3">
+                <div class="card m-0 mb-3 relative">
                     <div class="flex justify-between items-center">
                         <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Statuts') }}</h1>
-                        <button class="btn -mt-4 border text-xs text-pink-600 p-1 px-2 modal" data-container="has-modal"><i class="far fa-plus-square"></i> Ajouter</button>
                     </div>
                     <div class="-mx-4 border-t border-gray-200 mb-3"></div>
 
@@ -203,13 +194,15 @@
                             </div>                        
                         @endforeach
                     </div>
+                    <div class="absolute top-0 right-0 m-3">
+                        <button class="btn py-1 px-2 modal" data-container="has-modal"><i class="fas fa-plus"></i></button>
+                    </div>
                 </div>
 
                 <!-- Rent Paiements -->
-                <div class="card m-0 mb-3">
+                <div class="card m-0 mb-3 relative">
                     <div class="flex justify-between items-center">
                         <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Paiements') }}</h1>
-                        <button class="btn -mt-4 border text-xs text-pink-600 p-1 px-2"><i class="far fa-plus-square"></i> Ajouter</button>
                     </div>
                     <div class="-mx-4 border-t border-gray-200 mb-3"></div>
 
@@ -241,13 +234,15 @@
                         @endforelse
 
                     </div>
+                    <div class="absolute top-0 right-0 m-3">
+                        <button class="btn py-1 px-2 modal" data-container="has-modal"><i class="fas fa-plus"></i></button>
+                    </div>
                 </div>
 
                 <!-- Rent Depenses -->
-                <div class="card m-0">
+                <div class="card m-0 relative">
                     <div class="flex justify-between items-center">
                         <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Dépenses') }}</h1>
-                        <button class="btn -mt-4 border text-xs text-pink-600 p-1 px-2"><i class="far fa-plus-square"></i> Ajouter</button>
                     </div>
                     <div class="-mx-4 border-t border-gray-200 mb-3"></div>
 
@@ -277,6 +272,9 @@
                                 <i class="fas fa-info-circle"></i> Aucun Depense
                             </div>
                         @endforelse
+                    </div>
+                    <div class="absolute top-0 right-0 m-3">
+                        <button class="btn py-1 px-2 modal" data-container="has-modal"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
             </div>
