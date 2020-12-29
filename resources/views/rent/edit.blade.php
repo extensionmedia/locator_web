@@ -174,7 +174,10 @@
                         <div class="w-24 text-xs text-center py-1 font-bold rounded px-2 bg-red-200 text-red-800">{{ $rent->car_rent_end_date }}</div>
                     </div>
                     <div class="absolute top-0 right-0 m-3">
-                        <button class="btn py-1 px-2"><i class="fas fa-ellipsis-h"></i></button>
+                        <div class="dropdown relative">
+                            <button class="btn py-1 px-2"><i class="fas fa-ellipsis-h"></i></button>
+                            <div class="dropdown-content absolute right-0 hidden bg-red-100 p-2 rounded border">Content</div>                            
+                        </div>
                     </div>
                 </div>
                 <!-- Rent Statuses -->

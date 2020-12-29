@@ -13,4 +13,7 @@ class ClientController extends Controller
         return view('client.index', ['clients'=> Client::orderBy('client_name', 'asc')->paginate(20) ]);
     }
 
+    public function edit(Client $client){
+        return view('client.edit')->with(['client'=>$client]);
+    }
 }

@@ -2,10 +2,13 @@ require('./bootstrap');
 
 $(document).ready(function(){
     $('.dropdown').on('click', function(e){
-        $(".dropdown-content").slideUp('fast');
-        var dropdown = $(this).find('.dropdown-content');
-        dropdown.slideToggle( 200, 'swing');
-        e.stopPropagation();
+        if( $(this).find('.dropdown-content').hasClass('hidden') ){
+            $(".dropdown-content").slideUp('fast');
+            var dropdown = $(this).find('.dropdown-content');
+            dropdown.slideToggle( 200, 'swing');
+            e.stopPropagation();            
+        }
+
     });
 
     $(".dropdown").on('click', function(e){
