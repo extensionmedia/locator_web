@@ -13,7 +13,7 @@ class CreateClientCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('client_category', function (Blueprint $table) {
+        Schema::create('client_categories', function (Blueprint $table) {
             $table->id();
             $table->string('client_category');
             $table->boolean('is_default')->default(0);
@@ -28,6 +28,6 @@ class CreateClientCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_category');
+        Schema::dropIfExists('client_categories');
     }
 }

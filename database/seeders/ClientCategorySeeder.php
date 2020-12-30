@@ -14,8 +14,8 @@ class ClientCategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('client_category')->delete();
-        DB::table('client_category')->insert([
+        DB::table('client_categories')->delete();
+        DB::table('client_categories')->insert([
             [
                 'client_category'   => 'Passager',
                 'is_default'    =>  1

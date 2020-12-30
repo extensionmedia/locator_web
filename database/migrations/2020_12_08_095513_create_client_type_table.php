@@ -13,7 +13,7 @@ class CreateClientTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('client_type', function (Blueprint $table) {
+        Schema::create('client_types', function (Blueprint $table) {
             $table->id();
             $table->string('client_type');
             $table->boolean('is_default')->default(0);
@@ -28,6 +28,6 @@ class CreateClientTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_type');
+        Schema::dropIfExists('client_types');
     }
 }

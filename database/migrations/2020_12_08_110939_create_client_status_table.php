@@ -13,7 +13,7 @@ class CreateClientStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('client_status', function (Blueprint $table) {
+        Schema::create('client_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('client_status');
             $table->boolean('is_default')->default(0);
@@ -28,6 +28,6 @@ class CreateClientStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_status');
+        Schema::dropIfExists('client_statuses');
     }
 }
