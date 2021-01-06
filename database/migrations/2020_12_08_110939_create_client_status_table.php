@@ -18,6 +18,7 @@ class CreateClientStatusTable extends Migration
             $table->string('client_status');
             $table->boolean('is_default')->default(0);
             $table->string('client_status_color')->default(-1);
+            $table->string('client_status_icon')->nullable();
         });
     }
 

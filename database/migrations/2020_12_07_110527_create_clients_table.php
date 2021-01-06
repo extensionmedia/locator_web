@@ -22,6 +22,7 @@ class CreateClientsTable extends Migration
             $table->string('client_name');
             $table->string('client_telephone');
             $table->string('client_city');
+            $table->string('client_adresse');
             $table->string('client_cin');
             $table->date('client_cin_date_expiration');
             $table->string('client_passport');

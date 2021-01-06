@@ -68,7 +68,7 @@
                             {{ $client->client_city }}
                         </td>
                         <td class="w-28 text-center">
-                            {!! $client['status'] !!}
+                            {!! str_replace('[]', $client->status->client_status, $client->status->client_status_icon) !!}
                         </td>
                         <td class="w-24 text-right text-xs font-bold text-orange-400 pr-2"> {{ number_format($client->rents()->sum('car_rent_total'), 2) }} </td>
                         <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">{{ number_format($client->client_total_rent-$client->client_total_accompte, 2) }} </td>
