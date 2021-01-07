@@ -41,47 +41,153 @@
 
     <div class="xl:w-3/4 xl:mx-auto">
         <div class="flex gap-4">
-            <!-- Informations Client -->
-            <div class="card m-0 flex-1">
-                <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Les informations Client') }}</h1>
-                <div class="-mx-4 border-t border-gray-200 mb-6"></div>
+            <div class="flex-1">
+                <!-- Informations Client -->
+                <div class="card m-0 mb-4">
+                    <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Les informations Client') }}</h1>
+                    <div class="-mx-4 border-t border-gray-200 mb-6"></div>
 
-                <div class="flex gap-3 mb-3">
-                    <div class="flex-1">
-                        <label class="block">
-                            <span class="text-gray-700">Nom Client *</span>
-                            <input value="{{ $client->client_name }}" type="text" id="client_name" name="client_name" class="form-input mt-1 block w-full" placeholder="Nom Client">
-                        </label>
-                    </div>
-        
-                    <div class="flex-1">
-                        <label class="block">
-                            <span class="text-gray-700">Téléphone</span>
-                            <input value="{{ $client->client_telephone }}" type="text" id="client_telephone" name="client_telephone" class="form-input mt-1 block w-full" placeholder="Téléphone">
-                        </label>
-                    </div>
-                </div>
-
-                <div class="flex gap-3 mb-3">
-                    <div class="flex-1">
-                        <label class="block">
-                            <span class="text-gray-700">Ville *</span>
-                            <input value="{{ $client->client_city }}" type="text" id="client_city" name="client_city" class="form-input mt-1 block w-full" placeholder="Ville Client">
-                        </label>
-                    </div>
-                </div>
-
-                <div class="flex gap-3 mb-3">
-                    <div class="flex-1">
-                        <label class="block">
-                            <span class="text-gray-700">Adresse *</span>
-                            <input value="{{ $client->client_adresse }}" type="text" id="client_adresse" name="client_adresse" class="form-input mt-1 block w-full" placeholder="Adresse Client">
-                        </label>
-                    </div>
-                </div>
-            </div>   
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Nom Client *</span>
+                                <input value="{{ $client->client_name }}" type="text" id="client_name" name="client_name" class="form-input mt-1 block w-full" placeholder="Nom Client">
+                            </label>
+                        </div>
             
-            <div class="card m-0 w-64">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Date Naissance</span>
+                                <input value="{{ Carbon\Carbon::parse($client->client_date_naissance)->format('Y-m-d') }}" type="date" id="client_date_naissance" name="client_date_naissance" class="form-input mt-1 block w-full">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Téléphone(1)</span>
+                                <input value="{{ $client->client_telephone_1 }}" type="text" id="client_telephone_1" name="client_telephone_1" class="form-input mt-1 block w-full" placeholder="Téléphone">
+                            </label>
+                        </div>
+            
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Téléphone(2)</span>
+                                <input value="{{ $client->client_telephone_2 }}" type="text" id="client_telephone_2" name="client_telephone_2" class="form-input mt-1 block w-full" placeholder="Téléphone">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Email</span>
+                                <input value="{{ $client->client_email }}" type="text" id="client_email" name="client_email" class="form-input mt-1 block w-full" placeholder="Email">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Ville *</span>
+                                <input value="{{ $client->client_city }}" type="text" id="client_city" name="client_city" class="form-input mt-1 block w-full" placeholder="Ville Client">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Adresse *</span>
+                                <input value="{{ $client->client_adresse }}" type="text" id="client_adresse" name="client_adresse" class="form-input mt-1 block w-full" placeholder="Adresse Client">
+                            </label>
+                        </div>
+                    </div>
+                </div>   
+                
+                <!-- Identifiant Client -->
+                <div class="card m-0">
+                    <h1 class="text-lg font-bold text-gray-600 mb-2">{{ __('Identite Client') }}</h1>
+                    <div class="-mx-4 border-t border-gray-200 mb-6"></div>
+
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">N. CIN</span>
+                                <input value="{{ $client->client_cin }}" type="text" id="client_cin" name="client_cin" class="form-input mt-1 block w-full" placeholder="CIN">
+                            </label>
+                        </div>
+            
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Date Expiration</span>
+                                <input value="{{ Carbon\Carbon::parse($client->client_cin_date_expiration)->format('Y-m-d') }}" type="date" id="client_cin_date_expiration" name="client_cin_date_expiration" class="form-input mt-1 block w-full">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">N. Passport</span>
+                                <input value="{{ $client->client_passport }}" type="text" id="client_passport" name="client_passport" class="form-input mt-1 block w-full" placeholder="Passport">
+                            </label>
+                        </div>
+            
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Date Expiration</span>
+                                <input value="{{ Carbon\Carbon::parse($client->client_passport_date_expiration)->format('Y-m-d') }}" type="date" id="client_passport_date_expiration" name="client_passport_date_expiration" class="form-input mt-1 block w-full">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Nationalite</span>
+                                <input value="{{ $client->client_nationality }}" type="text" id="client_nationality" name="client_nationality" class="form-input mt-1 block w-full" placeholder="Nationalite Client">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">N. Permis</span>
+                                <input value="{{ $client->client_permis }}" type="text" id="client_permis" name="client_permis" class="form-input mt-1 block w-full" placeholder="Permis">
+                            </label>
+                        </div>
+                        <div class="w-20">
+                            <label class="block">
+                                <span class="text-gray-700">Type</span>
+                                <input value="{{ $client->client_permis_type }}" type="text" id="client_permis_type" name="client_permis_type" class="form-input mt-1 block w-full" placeholder="Permis">
+                            </label>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Date Expiration</span>
+                                <input value="{{ Carbon\Carbon::parse($client->client_permis_date_expiration)->format('Y-m-d') }}" type="date" id="client_permis_date_expiration" name="client_permis_date_expiration" class="form-input mt-1 block w-full">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 mb-3">
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Date Livraison</span>
+                                <input value="{{ Carbon\Carbon::parse($client->client_permis_date_livraison)->format('Y-m-d') }}" type="date" id="client_permis_date_livraison" name="client_permis_date_livraison" class="form-input mt-1 block w-full">
+                            </label>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block">
+                                <span class="text-gray-700">Lieu Livraison</span>
+                                <input value="{{ $client->client_permis_lieu_livraison }}" type="text" id="client_permis_lieu_livraison" name="client_permis_lieu_livraison" class="form-input mt-1 block w-full" placeholder="Permis">
+                            </label>
+                        </div>
+
+                    </div>
+                </div>                
+            </div>
+
+
+            <div class="card m-0 w-64 h-80">
                 <label class="block mb-4">
                     <span class="text-gray-700">Status</span>
                     <select name="client_status_id" id="client_status_id" class="form-select mt-1 block w-full">
