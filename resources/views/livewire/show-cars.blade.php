@@ -88,7 +88,7 @@
                             </td>
                             <td class="w-24 text-right text-xs font-bold text-pink-600 pr-2 ">45.900 MAD</td>
                             <td class="w-14 text-center">
-                                <form class="m-0" method="POST" action="{{ route('car.edit', ['car'=>1]) }}">
+                                <form class="m-0" method="POST" action="{{ route('car.edit', ['car'=>$car->id]) }}">
                                     @csrf()
                                     <button type="submit" class="btn"><i class="fas fa-ellipsis-h"></i></button>
                                 </form>

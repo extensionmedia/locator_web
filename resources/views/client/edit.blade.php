@@ -9,8 +9,18 @@
 @endsection
 
 @section('content')
-
-    <div class="card xl:w-3/4 xl:mx-auto">
+    <div class="flex justify-between items-center p-3">
+        <div class="flex gap-3">
+            <button class="btn"><i class="far fa-file-alt"></i> Locations</button>     
+            <button class="btn"><i class="far fa-file-alt"></i> Paiements</button>         
+            <button class="btn bg-green-400 text-gray-100"><i class="fab fa-whatsapp"></i> Whatsapp</button>
+        </div>
+        <div class="flex gap-3">
+            <button class="btn"><i class="far fa-copy"></i> Dupliquer</button> 
+            <button class="btn btn-primary"><i class="far fa-save"></i> Enregistrer</button>
+        </div>
+    </div>
+    <div class="card xl:w-3/4 xl:mx-auto relative">
         <div class="max-w-full overflow-auto">
             <?php
                 $images = [
@@ -36,7 +46,9 @@
                 </div>                
             @endforeach            
         </div>
-
+        <div class="absolute bottom-0 right-0 left-0 text-center pb-2">
+            <button class="btn text-white bg-green-400 border-green-300"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
+        </div>
     </div>
 
     <div class="xl:w-3/4 xl:mx-auto">
@@ -158,7 +170,7 @@
                         <div class="w-20">
                             <label class="block">
                                 <span class="text-gray-700">Type</span>
-                                <input value="{{ $client->client_permis_type }}" type="text" id="client_permis_type" name="client_permis_type" class="form-input mt-1 block w-full" placeholder="Permis">
+                                <input value="{{ $client->client_permis_type }}" type="text" id="client_permis_type" name="client_permis_type" class="form-input mt-1 block w-full text-center font-bold" placeholder="Type">
                             </label>
                         </div>
                         <div class="flex-1">
@@ -186,7 +198,7 @@
                 </div>                
             </div>
 
-
+                <!-- Status Client -->
             <div class="card m-0 w-64 h-80">
                 <label class="block mb-4">
                     <span class="text-gray-700">Status</span>

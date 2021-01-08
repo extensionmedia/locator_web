@@ -40,6 +40,8 @@ class CreateCarsTable extends Migration
             $table->string('car_matricule')->nullable();
             $table->string('car_matricule_w')->nullable();
 
+            $table->integer('car_kilometrage')->default(0);
+
             $table->string('car_photo')->nullable();
             $table->string('car_gps')->nullable();
             $table->string('car_numero_chassis');

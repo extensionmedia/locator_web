@@ -3,21 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Car;
+use App\Models\CarBrand;
+use App\Models\CarBrandSerie;
+use App\Models\CarCarburant;
+use App\Models\CarColor;
+use App\Models\CarGearbox;
+use App\Models\CarPuissance;
 
 class CarController extends Controller{
 
     public function index(){
         return view('car.index')->with([
-            'cars'  =>  CarController::getCars()
+            'cars'  =>  Car::all()
         ]);
     }
 
-    public function edit($car){
-        return view('car.edit')->with(
-            [
-                'car'   =>  CarController::getCars()[0]
-            ]
-            );
+    public function edit(Car $car){
+        return view('car.edit')->with([
+            'car'=>$car, 
+            'car_brands' => CarBrand::all(),
+            'car_brand_series' => CarBrandSerie::where('car_brand_id', $car->car_brand_id)->get(),
+            'car_carburants' => CarCarburant::all(), 
+            'car_colors' => CarColor::all(),
+            'car_gearboxes' => CarGearbox::all(),
+            'car_puissances' => CarPuissance::all(),
+            ]);
     }
 
     public static function getCars(){
