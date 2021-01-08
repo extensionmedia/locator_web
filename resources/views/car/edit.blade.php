@@ -187,7 +187,7 @@
             </div>
 
                 <!-- Status Client -->
-            <div class="card m-0 w-64 h-80">
+            <div class="card m-0 w-64">
                 <label class="block mb-4">
                     <span class="text-gray-700">Marque</span>
                     <select name="car_brand_id" id="car_brand_id" class="form-select mt-1 block w-full">
@@ -209,6 +209,38 @@
                     <select name="car_carburant_id" id="car_carburant_id" class="form-select mt-1 block w-full">
                         @foreach ($car_carburants as $carburant)
                             <option @if ($car->carburant->id == $carburant->id) selected @endif value="{{ $carburant->id }}">{{ $carburant->car_carburant }}</option> 
+                        @endforeach
+                    </select>
+                </label>
+                <label class="block mb-4">
+                    <span class="text-gray-700">Classe</span>
+                    <select name="car_class_id" id="car_class_id" class="form-select mt-1 block w-full">
+                        @foreach ($car_classes as $class)
+                            <option @if ($car->class->id == $class->id) selected @endif value="{{ $class->id }}">{{ $class->car_class }}</option> 
+                        @endforeach
+                    </select>
+                </label>
+                <label class="block mb-4">
+                    <span class="text-gray-700">Couleur</span>
+                    <select name="car_color_id" id="car_color_id" class="form-select mt-1 block w-full">
+                        @foreach ($car_colors as $color)
+                            <option @if ($car->color->id == $color->id) selected @endif value="{{ $color->id }}" style="background-color:{{ $color->car_color_code }}">{{ $color->car_color }}</option> 
+                        @endforeach
+                    </select>
+                </label>
+                <label class="block mb-4">
+                    <span class="text-gray-700">Boite à Vitesse</span>
+                    <select name="car_gearbox_id" id="car_gearbox_id" class="form-select mt-1 block w-full">
+                        @foreach ($car_gearboxes as $gearbox)
+                            <option @if ($car->gearbox->id == $gearbox->id) selected @endif value="{{ $gearbox->id }}">{{ $gearbox->car_gearbox }}</option> 
+                        @endforeach
+                    </select>
+                </label>
+                <label class="block mb-4">
+                    <span class="text-gray-700">Puissance Fiscale</span>
+                    <select name="car_puissance_id" id="car_puissance_id" class="form-select mt-1 block w-full">
+                        @foreach ($car_puissances as $puissance)
+                            <option @if ($car->puissance->id == $puissance->id) selected @endif value="{{ $puissance->id }}">{{ $puissance->car_puissance }}</option> 
                         @endforeach
                     </select>
                 </label>

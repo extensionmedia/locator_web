@@ -10,6 +10,7 @@ use App\Models\CarCarburant;
 use App\Models\CarColor;
 use App\Models\CarGearbox;
 use App\Models\CarPuissance;
+use App\Models\CarClass;
 
 class CarController extends Controller{
 
@@ -25,6 +26,7 @@ class CarController extends Controller{
             'car_brands' => CarBrand::all(),
             'car_brand_series' => CarBrandSerie::where('car_brand_id', $car->car_brand_id)->get(),
             'car_carburants' => CarCarburant::all(), 
+            'car_classes' => CarClass::all(),
             'car_colors' => CarColor::all(),
             'car_gearboxes' => CarGearbox::all(),
             'car_puissances' => CarPuissance::all(),
