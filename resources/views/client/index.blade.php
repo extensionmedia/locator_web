@@ -2,7 +2,7 @@
 @section('title') {{ __('Clients') }} @endsection
 @section('page_title') {{ __('Clients') }}   @endsection
 @section('content')
-    <div class="py-4 flex items-center justify-between">
+    <div class="py-4 flex items-center justify-between pr-2">
         <div class="flex gap-3">
             <div class="relative">
                <input type="text" class="border rounded focus:outline-none focus:bg-yellow-50 px-3 py-2 pr-6"> 
@@ -33,7 +33,7 @@
         </div>
 
         <div class="">
-            <button class="btn btn-primary"> <i class="fas fa-plus"></i> Ajouter
+            <a href="{{ route('client.create') }}" class="btn btn-primary"> <i class="fas fa-plus"></i> Ajouter </a>
         </div>
 
     </div>

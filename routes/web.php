@@ -24,6 +24,8 @@ Route::post('/park-auto/edit/{car}', [App\Http\Controllers\CarController::class,
 /** Client Routes */
 Route::get('/client', [App\Http\Controllers\ClientController::class, 'index'])->name('client.index');
 Route::post('/client/edit/{client}', [App\Http\Controllers\ClientController::class, 'edit'])->name('client.edit');
+Route::get('/client/create', [App\Http\Controllers\ClientController::class, 'create'])->name('client.create');
+Route::post('/client/store', [App\Http\Controllers\ClientController::class, 'store'])->name('client.store');
 
 /** Rent Routes */
 Route::get('/rent', [App\Http\Controllers\CarRentController::class, 'index'])->name('rent.index');
