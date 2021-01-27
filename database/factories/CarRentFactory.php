@@ -29,7 +29,7 @@ class CarRentFactory extends Factory
         $diff = $date->diffInDays($end);
         return [
             'user_id'                           =>  1,
-            'car_id'                            =>  $this->faker->numberBetween($min = 1, $max = 13),
+            'car_id'                            =>  $this->faker->numberBetween($min = 1, $max = 5),
             'client_id'                         =>  $this->faker->numberBetween($min = 1, $max = 65),
             'client_id_2'                       =>  $this->faker->numberBetween($min = 1, $max = 65),
             'car_rent_status_id'                =>  $this->faker->numberBetween($min = 1, $max = 5),

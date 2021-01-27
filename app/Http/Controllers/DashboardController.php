@@ -15,6 +15,7 @@ class DashboardController extends Controller
         $activities = UserController::usersActivities();
         $schedules = ScheduleController::listSchedules();
 
+        $rents = CarRentController::get_by_year_month();
 
         $days = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
         return view('dashboard')
@@ -24,7 +25,8 @@ class DashboardController extends Controller
                         'days'          =>  $days, 
                         'activities'    =>  $activities,
                         'schedules'     =>  $schedules,
-                        'numbers'       =>  $this->numbers()
+                        'numbers'       =>  $this->numbers(),
+                        'rents'         =>  $rents
                     ]);
     }
 

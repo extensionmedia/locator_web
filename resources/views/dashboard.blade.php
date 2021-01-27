@@ -4,17 +4,17 @@
 @section('page_title') {{ __('Dashboard') }}   @endsection
 
 @section('content')
-    @include('includes.cards')   
-    @include('includes.calendar')
+    @include('widgets.cards')   
+    @include('widgets.calendar')
 
     <div class="flex flex-col lg:flex-row overflow-hidden">
  
         <div class="flex-1">
-            @include('includes.schedule')
+            @include('widgets.schedule')
         </div>
 
         <div class="flex-1">
-            @include('includes.activities')
+            @include('widgets.activities')
          </div>
     </div>
 

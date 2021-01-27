@@ -53,14 +53,14 @@
                         ">
                 <div class="flex justify-between items-center mb-4">
                     <div class="text-orange-400 text-xl"><?= $icons[$i][0] ?></div>
-                    <div class="bg-green-400 text-white py-1 px-2 rounded-full text-xs" style="font-size: 10px">
+                    <div class="bg-green-300 text-white py-1 px-2 rounded-full text-xs" style="font-size: 10px">
                         12% <?= $icons[$i][1] ?>
                     </div>
                 </div>
                 <h1 class="font-bold text-xl text-gray-600">
                     <?= $icons[$i][2] ?>
                 </h1>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-300">
                     <?= $icons[$i][3] ?>
                 </p>
             </div>               

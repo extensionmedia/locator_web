@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\Client::factory(65)->create();
         \App\Models\CarRent::factory(163)->create();
-        \App\Models\Car::factory(13)->create();
+        \App\Models\Car::factory(5)->create();
         \App\Models\FinanceAccountMouvement::factory(163)->create();
         \App\Models\FinanceAccountMouvementOut::factory(163)->create();
         \App\Models\StatusOfCarRent::factory(263)->create();

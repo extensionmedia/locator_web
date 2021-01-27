@@ -49,3 +49,6 @@ Route::get('/comment', function(){
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::get('/test', [App\Http\Controllers\CarRentController::class, 'get_by_year_month']);
