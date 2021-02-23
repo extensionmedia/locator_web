@@ -27,6 +27,10 @@ Route::post('/client/edit/{client}', [App\Http\Controllers\ClientController::cla
 Route::get('/client/create', [App\Http\Controllers\ClientController::class, 'create'])->name('client.create');
 Route::post('/client/store', [App\Http\Controllers\ClientController::class, 'store'])->name('client.store');
 
+/** Finance Routes */
+Route::get('/finance', [App\Http\Controllers\FinanceAccountController::class, 'index'])->name('finance.index');
+
+
 /** Rent Routes */
 Route::get('/rent', [App\Http\Controllers\CarRentController::class, 'index'])->name('rent.index');
 Route::post('/rent/edit/{rent}', [App\Http\Controllers\CarRentController::class, 'edit'])->name('rent.edit');

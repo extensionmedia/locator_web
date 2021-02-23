@@ -5,6 +5,7 @@ $links = [
     ['<i class="far fa-address-card"></i>', 'Clients', route("client.index")],
     ['<i class="fas fa-car-alt"></i>', 'Park Auto', route("car.index")],
     ['<i class="fas fa-cash-register"></i>', 'Depenses', route("home")],
+    ['<i class="fas fa-donate"></i>', 'Finances', route("finance.index")],
     ['<i class="fas fa-user-friends"></i>', 'Utilisateurs', route("home")]
 ]
 ?>
