@@ -44,4 +44,19 @@
             </div>
         @endforeach
     </div>
+
+    <div class="flex">
+        <div class="card flex-1">
+            <canvas id="myPieChart" width="100%"></canvas>     
+        </div>   
+        
+        <div class="card flex-1">
+            card
+        </div>
+        <div class="card flex-1">
+            card
+        </div>
+    </div>
+
+
 @endsection

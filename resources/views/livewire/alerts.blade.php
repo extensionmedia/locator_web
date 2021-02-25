@@ -4,7 +4,7 @@
        <span class="w-2 h-2 bg-red-600 absolute rounded-full"></span> 
     @endif
     
-    <div class="dropdown-content hidden absolute cursor-default z-50 top-0 right-0 p-4 mt-8 bg-white rounded-lg shadow @if (count($alerts)) w-80 @else w-48 @endif max-h-80 overflow-y-scroll">
+    <div class="dropdown-content hidden absolute cursor-default z-50 top-0 right-0 p-4 mt-8 bg-white rounded-lg shadow @if (count($alerts)) w-80 @else w-48 @endif max-h-80 overflow-y-auto">
         <div class="pb-2 text-sm font-bold text-gray-600">
             Alerts
         </div>

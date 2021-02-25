@@ -1,4 +1,6 @@
 require('./bootstrap');
+import Chart from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 $(document).ready(function(){
     $('.dropdown').on('click', function(e){
@@ -54,5 +56,87 @@ $(document).ready(function(){
         `;
         $("."+container).addClass('relative').append(html.replace("{content}", content));
         $(".model-content").hide().slideDown( 200 );
-    })
+    });
+
+    if($("#myPieChart").length){
+        
+        var config = {
+            type : 'line',
+            caption :   '',
+            plugins: [ChartDataLabels],
+            labels : [],
+            data : [],
+            colors:[
+                '#003f5c',
+                '#2f4b7c',
+                '#665191',
+                '#a05195',
+                '#d45087',
+                '#f95d6a',
+                '#ff7c43',
+                '#ffa600'
+            ]
+        };
+
+        var ctx = document.getElementById('myPieChart');
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            plugins: [ChartDataLabels],
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Comptes ',
+                    data: []
+                }]
+            },
+            options:{
+                responsive:true,
+                legend:{
+                    position: 'bottom',
+                    align : 'start',
+                    display:true,
+                    labels:{
+                        boxWidth : 10,
+                        fontSize: 10
+                    }
+                },
+                plugins:{
+                    datalabels:{
+                        color : '#fff',
+                    }
+                }
+            }
+        });
+    
+    
+        $.ajax({
+            type        :     "GET",
+            url         :      "/finance/mouvements/totalByYear/2017",
+            dataType    :     "json",
+        }).done(function(response){
+            var labels = [];
+            var values = [];
+            var total = 0; 
+            for (var key in response){
+                labels.push(key);
+                values.push(response[key]['in']);
+            }
+
+            config.labels = labels;
+            config.data = values;
+            config.caption = 'Comptes finance';
+
+            myPieChart.data.labels=config.labels;
+            myPieChart.data.datasets[0].data=config.data;
+            myPieChart.data.datasets[0].backgroundColor=config.colors;
+            myPieChart.data.datasets[0].label = config.caption,
+            myPieChart.update();
+    
+        }).fail(function(xhr, textStatus, error) {
+            $("#preloader").remove();
+            console.log(xhr.statusText);
+            console.log(textStatus);
+            console.log(error);
+        });
+    }
 });
