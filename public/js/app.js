@@ -1873,7 +1873,7 @@ $(document).ready(function () {
         legend: {
           position: 'bottom',
           align: 'start',
-          display: true,
+          display: false,
           labels: {
             boxWidth: 10,
             fontSize: 10
@@ -1881,7 +1881,18 @@ $(document).ready(function () {
         },
         plugins: {
           datalabels: {
-            color: '#fff'
+            color: '#fff',
+            anchor: 'end',
+            align: 'start',
+            borderWidth: 2,
+            borderColor: '#fff',
+            borderRadius: 25,
+            backgroundColor: function backgroundColor(context) {
+              return context.dataset.backgroundColor;
+            },
+            font: {
+              weight: 'bold'
+            }
           }
         }
       }
