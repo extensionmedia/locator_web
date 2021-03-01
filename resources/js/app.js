@@ -1,6 +1,6 @@
 require('./bootstrap');
 import Chart from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+//import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 $(document).ready(function(){
     $('.dropdown').on('click', function(e){
@@ -58,12 +58,101 @@ $(document).ready(function(){
         $(".model-content").hide().slideDown( 200 );
     });
 
+    if($("#myBarChart").length){
+        var months_name = ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'];
+        var config = {
+            type : 'bar',
+            caption :   '',
+            labels : [],
+            data : [],
+            colors:[
+                '#003f5c',
+                '#2f4b7c',
+                '#665191',
+                '#a05195',
+                '#d45087',
+                '#f95d6a',
+                '#ff7c43',
+                '#ffa600'
+            ]
+        };
+
+        var ctx = document.getElementById('myBarChart');
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                        data: []
+                    },{
+                        data: []
+                    }
+                ]
+            },
+            options: {
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItems, data) { 
+                            return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'Mad' }).format(tooltipItems.yLabel);
+                        }
+                    }
+                }
+            }
+        });
+    
+        $.ajax({
+            type        :     "GET",
+            url         :      "/finance/mouvements/totalByYearAndMonth/2017",
+            dataType    :     "json",
+        }).done(function(response){
+            var labels = [];
+            var values = [];
+            var total = 0; 
+            var data = [];
+            var lbl = [];
+            var years = [];
+
+            for (var year in response){
+                years.push( year );
+                for (var months in response[year]){
+                    data.push( response[year][months] );
+                    lbl.push( months_name[months] );
+                }  
+                values.push( data );
+                labels.push( lbl );
+                data = [];
+                lbl = [];
+            }
+            config.labels = labels;
+            config.data = values;
+
+            myBarChart.data.labels = config.labels[0];
+
+            myBarChart.data.datasets[0].data=config.data[0];
+            myBarChart.data.datasets[0].backgroundColor='rgba(54, 162, 235, 0.6)'; //config.colors[3];
+            myBarChart.data.datasets[0].label=years[0];
+
+            myBarChart.data.datasets[1].data=config.data[1];
+            myBarChart.data.datasets[1].backgroundColor='rgba(255, 99, 132, 0.6)'; //config.colors[6];
+            myBarChart.data.datasets[1].label=years[1];
+            //myBarChart.data.datasets[1].type='line';
+            //myBarChart.data.datasets[0].type='line';
+
+            myBarChart.update();
+    
+        }).fail(function(xhr, textStatus, error) {
+            $("#preloader").remove();
+            console.log(xhr.statusText);
+            console.log(textStatus);
+            console.log(error);
+        });
+    }
+
     if($("#myPieChart").length){
         
         var config = {
             type : 'line',
             caption :   '',
-            plugins: [ChartDataLabels],
             labels : [],
             data : [],
             colors:[
@@ -81,7 +170,6 @@ $(document).ready(function(){
         var ctx = document.getElementById('myPieChart');
         var myPieChart = new Chart(ctx, {
             type: 'pie',
-            plugins: [ChartDataLabels],
             data: {
                 labels: [],
                 datasets: [{
@@ -99,31 +187,13 @@ $(document).ready(function(){
                         boxWidth : 10,
                         fontSize: 10
                     }
-                },
-                plugins:{
-                    datalabels:{
-                        color : '#fff',
-                        anchor: 'end',
-                        align: 'start',
-                        borderWidth: 2,
-                        borderColor: '#fff',
-                        borderRadius: 25,
-                        backgroundColor: (context) => {
-                            return context.dataset.backgroundColor;
-                        },
-                        font: {
-                            weight: 'bold'
-                        }
-                    }
-                    
                 }
             }
         });
     
-    
         $.ajax({
             type        :     "GET",
-            url         :      "/finance/mouvements/totalByYear/2017",
+            url         :      "/finance/mouvements/totalByYear/2019",
             dataType    :     "json",
         }).done(function(response){
             var labels = [];

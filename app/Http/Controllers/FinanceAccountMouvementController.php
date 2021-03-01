@@ -28,19 +28,31 @@ class FinanceAccountMouvementController extends Controller
         $year = $year==0? date('Y'): $year;
         $json = [];  
         $orders = FinanceAccountMouvement::select(
-                        DB::raw('sum(account_mouvement_in) as sums_in'), 
-                        DB::raw("DATE_FORMAT(account_mouvement_date,'%m') as monthKey")
+                        DB::raw('sum(account_mouvement_out+account_mouvement_in) as sums_in'), 
+                        DB::raw("DATE_FORMAT(account_mouvement_date,'%m') as monthKey"),
+                        DB::raw("DATE_FORMAT(account_mouvement_date,'%Y') as yearKey")
                     )
-                    ->whereYear('account_mouvement_date', $year)
+                    ->whereYear('account_mouvement_date', '>=', $year-1)
+                    ->whereYear('account_mouvement_date', '<=', $year)
                     ->groupBy('monthKey')
+                    ->groupBy('yearKey')
                     ->orderBy('monthKey', 'ASC')
                     ->get();
 
-        $json = [0,0,0,0,0,0,0,0,0,0,0,0];
+        $json = [
+                    ($year-1)   =>  [0,0,0,0,0,0,0,0,0,0,0,0],
+                    $year       =>  [0,0,0,0,0,0,0,0,0,0,0,0]
+                ];
 
         foreach($orders as $order){
-            $json[$order->monthKey-1] = $order->sums_in;
+            $json[$order->yearKey][$order->monthKey-1] = $order->sums_in;
         }
         return json_encode($json);
+    }
+
+    public function depense_index(){
+        return view('depense.index')->with([
+            'depenses'  =>  FinanceAccountMouvement::where('account_mouvement_out', '>', 0)->orderBy('account_mouvement_date', 'desc')->paginate(20)
+        ]);
     }
 }

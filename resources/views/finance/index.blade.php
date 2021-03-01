@@ -47,15 +47,15 @@
 
     <div class="flex">
         <div class="card flex-1">
+            <h1 class="text-xl">Recettes par compte </h1>
             <canvas id="myPieChart" width="100%"></canvas>     
         </div>   
         
         <div class="card flex-1">
-            card
+            <h1 class="text-xl">Mouvements par mois </h1>
+            <canvas id="myBarChart" width="100%"></canvas>   
         </div>
-        <div class="card flex-1">
-            card
-        </div>
+
     </div>
 
 

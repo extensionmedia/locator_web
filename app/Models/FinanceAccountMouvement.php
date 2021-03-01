@@ -9,7 +9,7 @@ class FinanceAccountMouvement extends Model{
     use HasFactory;
 
     public function account(){
-        return $this->belongsTo(FinanceAccount::class);
+        return $this->belongsTo(FinanceAccount::class, 'finance_account_id');
     }
 
     public function category(){
