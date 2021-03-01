@@ -35,7 +35,8 @@ Route::get('/finance/mouvements/totalByYearAndMonth/{year}', [App\Http\Controlle
 /** Depenses Routes */
 Route::get('/depense', [App\Http\Controllers\FinanceAccountMouvementController::class, 'depense_index'])->name('depense.index');
 Route::get('/depense/create', [App\Http\Controllers\FinanceAccountMouvementController::class, 'depense_create'])->name('depense.create');
-
+Route::post('/depense/edit/{depense}', [App\Http\Controllers\FinanceAccountMouvementController::class, 'depense_edit'])->name('depense.edit');
+Route::post('/depense/store', [App\Http\Controllers\FinanceAccountMouvementController::class, 'depense_store'])->name('depense.store');
 
 /** Rent Routes */
 Route::get('/rent', [App\Http\Controllers\CarRentController::class, 'index'])->name('rent.index');

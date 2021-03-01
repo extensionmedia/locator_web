@@ -1979,11 +1979,11 @@ $(document).ready(function () {
       caption: '',
       labels: [],
       data: [],
-      colors: ['#003f5c', '#2f4b7c', '#665191', '#a05195', '#d45087', '#f95d6a', '#ff7c43', '#ffa600']
+      colors: ['#ffa600', '#ff7c43', '#665191', '#a05195', '#d45087', '#f95d6a', '#2f4b7c', '#003f5c']
     };
     var ctx = document.getElementById('myPieChart');
     var myPieChart = new (chart_js__WEBPACK_IMPORTED_MODULE_0___default())(ctx, {
-      type: 'pie',
+      type: 'doughnut',
       data: {
         labels: [],
         datasets: [{

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\FinanceAccount;
 use App\Models\FinanceAccountMouvement;
+use App\Models\FinanceAccountMouvementCategory;
+use App\Models\PaymentType;
 use Illuminate\Http\Request;
 use DB;
 
@@ -53,6 +55,14 @@ class FinanceAccountMouvementController extends Controller
     public function depense_index(){
         return view('depense.index')->with([
             'depenses'  =>  FinanceAccountMouvement::where('account_mouvement_out', '>', 0)->orderBy('account_mouvement_date', 'desc')->paginate(20)
+        ]);
+    }
+
+    public function depense_create(){
+        return view('depense.create')->with([
+            'categories'  =>  FinanceAccountMouvementCategory::where('is_in', 0)->get(),
+            'accounts'  =>  FinanceAccount::where('finance_account_is_active', 1)->get(),
+            'types'  =>  PaymentType::orderBy('payment_type')->get()
         ]);
     }
 }
