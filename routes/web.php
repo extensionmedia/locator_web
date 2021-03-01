@@ -29,7 +29,7 @@ Route::post('/client/store', [App\Http\Controllers\ClientController::class, 'sto
 
 /** Finance Routes */
 Route::get('/finance', [App\Http\Controllers\FinanceAccountController::class, 'index'])->name('finance.index');
-Route::get('/finance/mouvements/totalByYear/{year}', [App\Http\Controllers\FinanceAccountMouvementController::class, 'totalByYear'])->name('finance.mouvements.totalByYear');
+Route::get('/finance/mouvements/totalByYear/{year}', [App\Http\Controllers\FinanceAccountMouvementController::class, 'totalByYearAndMonth'])->name('finance.mouvements.totalByYear');
 
 /** Rent Routes */
 Route::get('/rent', [App\Http\Controllers\CarRentController::class, 'index'])->name('rent.index');
