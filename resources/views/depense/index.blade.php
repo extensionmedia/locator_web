@@ -69,7 +69,7 @@
                             @money($depense->account_mouvement_out) 
                         </td>
                         <td class="w-14 text-center">
-                            <form class="m-0" method="POST" action="{{ route('client.edit', ['client'=>$depense->id]) }}">
+                            <form class="m-0" method="POST" action="{{ route('depense.edit', ['depense'=>$depense->id]) }}">
                                 @csrf()
                                 <button type="submit" class="btn"><i class="fas fa-ellipsis-h"></i></button>
                             </form>

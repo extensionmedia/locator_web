@@ -65,4 +65,17 @@ class FinanceAccountMouvementController extends Controller
             'types'  =>  PaymentType::orderBy('payment_type')->get()
         ]);
     }
+
+    public function depense_edit(FinanceAccountMouvement $depense){
+        return view('depense.edit')->with([
+            'depense'   =>  $depense,
+            'categories'  =>  FinanceAccountMouvementCategory::where('is_in', 0)->get(),
+            'accounts'  =>  FinanceAccount::where('finance_account_is_active', 1)->get(),
+            'types'  =>  PaymentType::orderBy('payment_type')->get()
+        ]);
+    }
+
+    public function depense_update(Request $request){
+        dd($request);
+    }
 }
