@@ -39,6 +39,11 @@ Route::post('/depense/edit/{depense}', [App\Http\Controllers\FinanceAccountMouve
 Route::post('/depense/store', [App\Http\Controllers\FinanceAccountMouvementController::class, 'depense_store'])->name('depense.store');
 Route::put('/depense/update', [App\Http\Controllers\FinanceAccountMouvementController::class, 'depense_update'])->name('depense.update');
 
+/** Mouvements Routes */
+Route::get('/finance/mouvement', [App\Http\Controllers\FinanceAccountMouvementController::class, 'index'])->name('mouvement.index');
+Route::get('/finance/mouvement/edit', [App\Http\Controllers\FinanceAccountMouvementController::class, 'edit'])->name('mouvement.edit');
+Route::get('/finance/mouvement/create', [App\Http\Controllers\FinanceAccountMouvementController::class, 'create'])->name('mouvement.create');
+
 /** Rent Routes */
 Route::get('/rent', [App\Http\Controllers\CarRentController::class, 'index'])->name('rent.index');
 Route::post('/rent/edit/{rent}', [App\Http\Controllers\CarRentController::class, 'edit'])->name('rent.edit');

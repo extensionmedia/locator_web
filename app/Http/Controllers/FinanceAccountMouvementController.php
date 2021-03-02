@@ -78,4 +78,16 @@ class FinanceAccountMouvementController extends Controller
     public function depense_update(Request $request){
         dd($request);
     }
+
+    public function index(){
+        return view('finance.mouvement.index')->with([
+            'mouvements'    =>  FinanceAccountMouvement::orderBy('account_mouvement_date', 'desc')->paginate(50)
+        ]);
+    }
+
+    public function create(){
+        return view('finance.mouvement.create')->with([
+
+        ]);
+    }
 }
