@@ -43,6 +43,8 @@ Route::put('/depense/update', [App\Http\Controllers\FinanceAccountMouvementContr
 Route::get('/finance/mouvement', [App\Http\Controllers\FinanceAccountMouvementController::class, 'index'])->name('mouvement.index');
 Route::get('/finance/mouvement/edit', [App\Http\Controllers\FinanceAccountMouvementController::class, 'edit'])->name('mouvement.edit');
 Route::get('/finance/mouvement/create', [App\Http\Controllers\FinanceAccountMouvementController::class, 'create'])->name('mouvement.create');
+Route::post('/finance/mouvement/ajax', [App\Http\Controllers\FinanceAccountMouvementController::class, 'ajax'])->name('mouvement.ajax');
+
 
 /** Rent Routes */
 Route::get('/rent', [App\Http\Controllers\CarRentController::class, 'index'])->name('rent.index');

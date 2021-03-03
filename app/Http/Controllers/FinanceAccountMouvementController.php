@@ -81,7 +81,7 @@ class FinanceAccountMouvementController extends Controller
 
     public function index(){
         return view('finance.mouvement.index')->with([
-            'mouvements'    =>  FinanceAccountMouvement::orderBy('account_mouvement_date', 'desc')->paginate(50)
+            'mouvements'    =>  FinanceAccountMouvement::orderBy('account_mouvement_date', 'desc')->paginate(20)
         ]);
     }
 
@@ -89,5 +89,15 @@ class FinanceAccountMouvementController extends Controller
         return view('finance.mouvement.create')->with([
 
         ]);
+    }
+
+    public function ajax(Request $req){
+        $html = '';
+        foreach(FinanceAccountMouvement::where('description', 'like', "%{$req->input('req')}%")->orderBy('account_mouvement_date', 'desc')->get() as $mouvement){
+            $html .= view('finance.mouvement.includes.ligne')->with([
+                'mouvement' =>  $mouvement
+            ]);            
+        }
+        return $html;
     }
 }

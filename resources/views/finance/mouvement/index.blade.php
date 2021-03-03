@@ -5,7 +5,7 @@
     <div class="py-4 flex items-center justify-between pr-2">
         <div class="flex gap-3">
             <div class="relative">
-               <input type="text" class="border rounded focus:outline-none focus:bg-yellow-50 px-3 py-2 pr-6"> 
+               <input type="text" class="inputSearch border rounded focus:outline-none focus:bg-yellow-50 px-3 py-2 pr-6"> 
                <span class="absolute top-0 right-0 m-2 mt-3 text-gray-400"><i class="fas fa-search"></i></span>
             </div>
             
@@ -89,13 +89,37 @@
     </div>
     <script>
         $(document).ready(function(){
-            $('.ajax').addClass('relative').append(`
-                <div class="absolute top-0 left-0 right-0 h-full text-center pt-12" style="background-color:rgba(255,255,100,.3)">
-                    <div class="w-32 mx-auto">
-                        <img src="{{ url("storage/images/loader.gif") }}">
-                    </div>
-                </div>
-            `);
+            $('.inputSearch').keypress(function (e) {
+                if (e.which == 13) {
+
+                    var req = $(this).val();
+                    var csrf_token = $('meta[name="csrf-token"]').attr('content');
+
+                    $('.ajax').addClass('relative').append(`
+                        <div class="loader absolute top-0 left-0 right-0 h-full text-center pt-12" style="background-color:rgba(0,0,0,.1)">
+                            <div class="w-32 mx-auto">
+                                <img src="{{ url("storage/images/loader.gif") }}">
+                            </div>
+                        </div>
+                    `);  
+
+                    $.ajax({
+                        url : '{{ route('mouvement.ajax') }}',
+                        type : 'POST',
+                        data : {'req':req, '_token':csrf_token},
+                        success : function(r){
+                            console.log(r);
+                            $('.ajax table tbody').empty();
+                            $('.ajax table tbody').html(r);
+
+                            $('.loader').remove();
+                        }
+                    });
+                }
+            });
+
+
+
         });
     </script>
 @endsection
