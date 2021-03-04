@@ -37,10 +37,9 @@
                     </div>
                 @endforeach                
                 </div>
-
-                <a href="" class="z-20 absolute bottom-0 left-0 right-0 pb-2 text-center bg-white">
+                <div class="z-20 absolute bottom-0 left-0 right-0 pb-6 text-center bg-white">
                     <a href="{{route('mouvement.index')}}" class="btn txt-sm px-4 rounded-md">Consulter</a>
-                </a>
+                </div>
             </div>
         @endforeach
     </div>

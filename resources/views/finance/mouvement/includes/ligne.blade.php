@@ -1,5 +1,5 @@
 <tr class="border-b hover:bg-gray-100" style="transition: all .3s">
-    <td class="py-1" style="min-width: 60px">
+    <td class="py-1 pl-1" style="min-width: 60px">
         {{ $mouvement->account_mouvement_date }}
     </td>
     <td>

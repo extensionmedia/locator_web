@@ -108,6 +108,7 @@
                         type : 'POST',
                         data : {'req':req, '_token':csrf_token},
                         success : function(r){
+                            history.pushState({}, null, '{{ route('mouvement.ajax') }}');
                             console.log(r);
                             $('.ajax table tbody').empty();
                             $('.ajax table tbody').html(r);
