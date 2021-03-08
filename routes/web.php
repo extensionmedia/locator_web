@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarRentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +62,9 @@ Route::get('/rent/countClients', function(){
 Route::get('/rent/totalDepenses', function(){
     return App\Models\FinanceAccountMouvement::where('account_mouvement_out', '>', 0)->sum('account_mouvement_out');
 });
+
+Route::get('/contrat', [CarRentController::class, 'create_contrat'])->name('contrat.create');
+
 Route::get('/comment', function(){
     return view('comment');
 });

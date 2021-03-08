@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CarRent;
+use PDF;
 
 class CarRentController extends Controller
 {
@@ -43,6 +44,12 @@ class CarRentController extends Controller
 
 
         return $rents;
+
+    }
+
+    public function create_contrat(){
+        $pdf = PDF::loadView('printed.contrat');
+        return $pdf->download('contrat.pdf');
 
     }
 }

@@ -181,6 +181,7 @@ return [
             My Services
         */
         andcarpi\Popper\PopperServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -238,6 +239,7 @@ return [
             My Alias
         */
         'Popper' => andcarpi\Popper\Facades\Popper::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];
