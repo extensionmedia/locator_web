@@ -52,4 +52,8 @@ class CarRentController extends Controller
         return $pdf->download('contrat.pdf');
 
     }
+
+    public function show_contrat(){
+        return view('printed.contrat');
+    }
 }

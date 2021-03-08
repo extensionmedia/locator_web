@@ -64,6 +64,7 @@ Route::get('/rent/totalDepenses', function(){
 });
 
 Route::get('/contrat', [CarRentController::class, 'create_contrat'])->name('contrat.create');
+Route::get('/contrat/show', [CarRentController::class, 'show_contrat'])->name('contrat.show');
 
 Route::get('/comment', function(){
     return view('comment');

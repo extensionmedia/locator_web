@@ -12,7 +12,7 @@
     <div class="has-modal">
         <div class="flex justify-between items-center p-3">
             <div class="flex gap-3">
-                <a href="{{route('contrat.create')}}" class="btn"><i class="far fa-file-alt"></i> Aperçu</a>     
+                <a href="{{route('contrat.show')}}" class="btn"><i class="far fa-file-alt"></i> Aperçu</a>     
                 <button class="btn"><i class="far fa-file-alt"></i> Paiement</button>         
                 <button class="btn"><i class="far fa-envelope"></i> Email</button>
                 <button class="btn bg-green-400 text-gray-100"><i class="fab fa-whatsapp"></i> Whatsapp</button>
