@@ -48,12 +48,15 @@ class CarRentController extends Controller
     }
 
     public function create_contrat(){
-        $pdf = PDF::loadView('printed.contrat');
+        $data = ['data'=>'test', 'is_printed'=>true];
+        $pdf = PDF::loadView('printed.contrat.index', $data);
         return $pdf->download('contrat.pdf');
 
     }
 
     public function show_contrat(){
-        return view('printed.contrat');
+        $data = 'test';
+
+        return view('printed.contrat.index', ['data'=>$data, 'is_printed'=>false]);
     }
 }
